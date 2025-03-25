@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Estate - Find Your Perfect Home in Kolkata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #14b8a6;
+            --dark: #0f172a;
+            --gray-light: #f1f5f9;
+            --gray: #94a3b8;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+        
+        .search-container {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: -48px;
+            position: relative;
+            z-index: 10;
+            box-shadow: var(--shadow-lg);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray);
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .search-button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin-top: 24px;
+            width: 100%;
+        }
+        
+        .search-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .section {
+            padding: 64px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 48px;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .feature-desc {
+            color: var(--gray);
+        }
+        
+        .properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .property-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .property-image {
+            height: 200px;
+            background-color: var(--gray-light);
+            position: relative;
+        }
+        
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .property-tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .property-favorite {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .property-favorite:hover, .property-favorite.active {
+            background-color: #fee2e2;
+            color: #ef4444;
+        }
+        
+        .property-content {
+            padding: 20px;
+        }
+        
+        .property-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .property-address {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .property-details {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--gray-light);
+            padding-top: 16px;
+        }
+        
+        .property-detail {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .property-detail i {
+            margin-right: 6px;
+            color: var(--primary);
+        }
+
+        /* About Us Section */
+#about {
+    padding: 50px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.about-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-text h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.about-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-text ul li {
+    font-size: 16px;
+    color: #444;
+    margin: 10px 0;
+}
+
+.about-text ul li i {
+    color: #007bff;
+    margin-right: 8px;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+/* Team Section */
+.team-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.team-member {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-member h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #222;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #f8b400;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f8b400;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-icons a img {
+    width: 30px;
+    height: 30px;
+    transition: 0.3s;
+}
+
+.social-icons a img:hover {
+    transform: scale(1.2);
+}
+
+/* Copyright Section */
+.footer-bottom {
+    background-color: #111;
+    padding: 15px;
+    font-size: 14px;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-home"></i> Dream Estate
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Dream Home in Kolkata</h1>
+                <p>Discover thousands of properties for rent and sale across Kolkata</p>
+                <button class="btn btn-primary">Explore Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Search Section -->
+    <div class="container">
+        <div class="search-container">
+            <form class="search-form">
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="City, Neighborhood">
+                </div>
+                
+                <div class="form-group">
+                    <label for="property-type">Property Type</label>
+                    <select id="property-type">
+                        <option value="">All Types</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House</option>
+                        <option value="villa">Villa</option>
+                        <option value="pg">PG/Hostel</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price-range">Price Range</label>
+                    <select id="price-range">
+                        <option value="">Any Price</option>
+                        <option value="0-10000">₹0 - ₹10,000</option>
+                        <option value="10000-25000">₹10,000 - ₹25,000</option>
+                        <option value="25000-50000">₹25,000 - ₹50,000</option>
+                        <option value="50000+">₹50,000+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="beds">Bedrooms</label>
+                    <select id="beds">
+                        <option value="">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+            </form>
+            
+            <button class="search-button">
+                <i class="fas fa-search"></i> Search Properties
+            </button>
+        </div>
+    </div>
+    
+    <!-- Featured Properties Section -->
+<section class="section" id="properties">
+    <div class="container">
+        <h2 class="section-title">Featured Properties</h2>
+        
+        <div class="properties">
+            <!-- Property 1 -->
+            <div class="property-card">
+                <div class="property-image">
+                    <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=400&h=300" alt="Modern Apartment">
+                    <span class="property-tag">For Rent</span>
+                    <div class="property-favorite" data-id="1">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+                
+                <div class="property-content">
+                    <div class="property-price">₹28,000/month</div>
+                    <h3 class="property-title">Modern Apartment in Ballygunge</h3>
+                    <p class="property-address">
+                        <i class="fas fa-map-marker-alt"></i> Ballygunge, Kolkata
+                    </p>
+                    
+                    <div class="property-details">
+                        <div class="property-detail">
+                            <i class="fas fa-bed"></i> 2 Beds
+                        </div>
+                        <div class="property-detail">
+                            <i class="fas fa-bath"></i> 2 Baths
+                        </div>
+                        <div class="property-detail">
+                            <i class="fas fa-ruler-combined"></i> 1,100 sqft
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Property 2 -->
+            <div class="property-card">
+                <div class="property-image">
+                    <img src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?w=400&h=300" alt="Luxury Villa">
+                    <span class="property-tag">For Sale</span>
+                    <div class="property-favorite" data-id="2">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+                
+                <div class="property-content">
+                    <div class="property-price">₹1.35 Cr</div>
+                    <h3 class="property-title">Luxury Villa in Salt Lake City</h3>
+                    <p class="property-address">
+                        <i class="fas fa-map-marker-alt"></i> Salt Lake City, Kolkata
+                    </p>
+                    
+                    <div class="property-details">
+                        <div class="property-detail">
+                            <i class="fas fa-bed"></i> 4 Beds
+                        </div>
+                        <div class="property-detail">
+                            <i class="fas fa-bath"></i> 3 Baths
+                        </div>
+                        <div class="property-detail">
+                            <i class="fas fa-ruler-combined"></i> 2,500 sqft
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Property 3 -->
+            <div class="property-card">
+                <div class="property-image">
+                    <img src="https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?w=400&h=300" alt="Cozy Studio">
+                    <span class="property-tag">For Rent</span>
+                    <div class="property-favorite" data-id="3">
+                        <i class="far fa-heart"></i>
+                    </div>
+                </div>
+                
+                <div class="property-content">
+                    <div class="property-price">₹16,500/month</div>
+                    <h3 class="property-title">Cozy Studio near New Town</h3>
+                    <p class="property-address">
+                        <i class="fas fa-map-marker-alt"></i> New Town, Kolkata
+                    </p>
+                    
+                    <div class="property-details">
+                        <div class="property-detail">
+                            <i class="fas fa-bed"></i> 1 Bed
+                        </div>
+                        <div class="property-detail">
+                            <i class="fas fa-bath"></i> 1 Bath
+                        </div>
+                        <div class="property-detail">
+                            <i class="fas fa-ruler-combined"></i> 600 sqft
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+<section class="section" id="features">
+    <div class="container">
+        <h2 class="section-title">Our Features</h2>
+
+        <div class="features">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="feature-title">Property Comparison</h3>
+                <p class="feature-desc">Compare different properties side by side to make the best decision for your needs.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">Direct Messaging</h3>
+                <p class="feature-desc">Communicate directly with landlords and tenants through our secure messaging system.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="feature-title">Secure Payments</h3>
+                <p class="feature-desc">Multiple secure payment options including UPI, cards, and net banking with complete encryption.</p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="feature-title">Maintenance Requests</h3>
+                <p class="feature-desc">Easily report and track maintenance needs for your rental property.</p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3 class="feature-title">Interactive Maps</h3>
+                <p class="feature-desc">Explore neighborhoods with interactive maps showing nearby schools, hospitals, and markets.</p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <h3 class="feature-title">Rent Receipts</h3>
+                <p class="feature-desc">Automatically generate rent receipts for all payment records with GST details.</p>
+            </div>
+
+            <!-- Feature 7 (New) -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3 class="feature-title">Smart Tenant Matching</h3>
+                <p class="feature-desc">AI-powered recommendations to match tenants with suitable properties based on preferences.</p>
+            </div>
+
+            <!-- Feature 8 (New) -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">AI-Based Price Estimation</h3>
+                <p class="feature-desc">Real-time AI analysis to suggest competitive pricing for buying, selling, or renting properties.</p>
+            </div>
+
+            <!-- Feature 9 (New) -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Verified Listings & Fraud Protection</h3>
+                <p class="feature-desc">All properties and tenants are verified to ensure a safe and secure renting experience.</p>
+            </div>
+
+            <!-- Feature 10 (New) -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-signature"></i>
+                </div>
+                <h3 class="feature-title">Legal Document Generator</h3>
+                <p class="feature-desc">Generate rental agreements and lease documents automatically with e-signature support.</p>
+            </div>
+
+            <!-- Feature 11 (New) -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3 class="feature-title">Automated Lease Renewals</h3>
+                <p class="feature-desc">System-generated lease renewal reminders and auto-renewal options for landlords and tenants.</p>
+            </div>
+
+            <!-- Feature 12 (New) -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3 class="feature-title">Real-Time Property Analytics</h3>
+                <p class="feature-desc">Track market trends, property valuation, and rental demand with real-time analytics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section (Add Just Before Footer) -->
+<section class="section" id="about">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Welcome to Dream Estate</h3>
+                <p>Dream Estate is your trusted real estate management platform, designed to make buying, selling, and renting properties easier than ever. With our advanced technology, verified listings, and customer-first approach, we aim to redefine the real estate experience.</p>
+
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 100% Verified Listings</li>
+                    <li><i class="fas fa-check-circle"></i> AI-Based Property Recommendations</li>
+                    <li><i class="fas fa-check-circle"></i> Secure Payment System</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 Customer Support</li>
+                </ul>
+            </div>
+
+            <div class="about-image">
+                <img src="https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?w=500&h=350" alt="About Us">
+            </div>
+        </div>
+
+        <h3 class="team-title">Meet Our Team</h3>
+        <div class="team">
+            <div class="team-member">
+                <img src="https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?w=200&h=200" alt="CEO">
+                <h4>Abhirup Das</h4>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="ankit.jpg" alt="CTO">
+                <h4>Ankit Ranjan</h4>
+                <p>CTO & Lead Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=200&h=200" alt="Designer">
+                <h4>Vishu Ansh Manglam</h4>
+                <p>UI/UX Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.pexels.com/photos/4283645/pexels-photo-4283645.jpeg?w=200&h=200" alt="Intern">
+                <h4>Satyam Kumar</h4>
+                <p>Intern</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#properties">Properties</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>📍 Kolkata, India</p>
+            <p>📞 +91 98765 43210</p>
+            <p>📧 support@dreamestate.com</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 Dream Estate | All Rights Reserved.</p>
+    </div>
+</footer>
