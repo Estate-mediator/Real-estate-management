@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Estate - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .image-container {
+            flex: 1;
+            background-image: url('/api/placeholder/800/600');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .image-container {
+                display: block;
+            }
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .branding {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1;
+            color: white;
+        }
+
+        .branding h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .branding p {
+            font-size: 16px;
+            max-width: 300px;
+        }
+
+        .login-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-header {
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #4c84ff;
+            outline: none;
+        }
+
+        .remember {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .remember label {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+
+        .remember input {
+            margin-right: 5px;
+        }
+
+        .remember a {
+            color: #4c84ff;
+            text-decoration: none;
+        }
+
+        .remember a:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            background-color: #4c84ff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #3a6cce;
+        }
+
+        .divider {
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #eee;
+        }
+
+        .divider span {
+            position: relative;
+            background-color: white;
+            padding: 0 15px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: #eaeaea;
+        }
+
+        .signup {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .signup a {
+            color: #4c84ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        .user-type {
+            margin-bottom: 20px;
+        }
+
+        .user-type-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .user-option {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .user-option.active {
+            background-color: #4c84ff;
+            color: white;
+            border-color: #4c84ff;
+        }
+
+        .user-option:hover:not(.active) {
+            border-color: #4c84ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side with image and branding -->
+        <div class="image-container">
+            <div class="branding">
+                <h2>Dream Estate</h2>
+                <p>Find your perfect home with our real estate management platform.</p>
+            </div>
+        </div>
+
+        <!-- Right side with login form -->
+        <div class="login-form">
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p>Please login to access your account</p>
+            </div>
+
+            <div class="user-type">
+                <label>Login as:</label>
+                <div class="user-type-options">
+                    <div class="user-option active">Tenant</div>
+                    <div class="user-option">Landlord</div>
+                    <div class="user-option">Custodian</div>
+                </div>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="remember">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+
+            <div class="social-login">
+                <div class="social-btn">G</div>
+                <div class="social-btn">f</div>
+                <div class="social-btn">in</div>
+            </div>
+
+            <div class="signup">
+                Don't have an account? <a href="./signup.html">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to handle user type selection
+        document.querySelectorAll('.user-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.user-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <script>
+        // Handle login form submission
+        document.querySelector('form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const userType = document.querySelector('.user-option.active').textContent.toLowerCase();
+          
+          try {
+            const response = await fetch('http://localhost:3000/api/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email, password, userType })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+              // Store user data in local storage or session
+              localStorage.setItem('user', JSON.stringify(data.user));
+              alert('Login successful!');
+              // Redirect to dashboard based on user type
+              window.location.href = `/${userType}-dashboard.html`;
+            } else {
+              alert(data.message || 'Login failed. Please try again.');
+            }
+          } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again later.');
+          }
+        });
+      </script>
+</body>
+</html>
