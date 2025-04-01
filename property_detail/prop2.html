@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Apartment in Ballygunge | Property Details</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #3478F6;
+    }
+    
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+    }
+    
+    .property-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 30px 0;
+    }
+    
+    .property-title h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .property-location {
+      display: flex;
+      align-items: center;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    
+    .property-price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #3478F6;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 300px 300px;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .main-image {
+      grid-row: span 2;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .small-image {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .content-area {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+    
+    .property-details {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .features {
+      display: flex;
+      gap: 50px;
+      margin: 20px 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .feature-icon {
+      color: #3478F6;
+      font-size: 20px;
+    }
+    
+    .section-title {
+      font-size: 20px;
+      margin: 20px 0 15px 0;
+    }
+    
+    .amenities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .amenity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .booking-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 20px;
+    }
+    
+    .date-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .date-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    
+    .cta-button {
+      background-color: #3478F6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 15px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+    
+    .cta-button:hover {
+      background-color: #2361d9;
+    }
+    
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+    
+    .total-price-value {
+      font-weight: bold;
+    }
+    
+    .owner-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .contact-button {
+      background-color: transparent;
+      color: #3478F6;
+      border: 1px solid #3478F6;
+      border-radius: 6px;
+      padding: 15px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .contact-button:hover {
+      background-color: rgba(52, 120, 246, 0.1);
+    }
+    
+    .map {
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 300px;
+    }
+    
+    .availability-calendar {
+      margin-top: 30px;
+    }
+    
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #ff9800;
+    }
+    
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 150px 150px;
+      }
+      
+      .main-image {
+        grid-row: span 1;
+      }
+      
+      .content-area {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">HomeRent</div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="#">Rent</a>
+        <a href="#">Buy</a>
+        <a href="#">Saved</a>
+        <a href="#">Profile</a>
+      </nav>
+    </header>
+    
+    <div class="property-header">
+      <div class="property-title">
+        <h1>Luxury Villa in Salt lake</h1>
+        <div class="property-location">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Salt lake, Kolkata</span>
+        </div>
+        <div class="rating">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff9800" stroke="#ff9800">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>4.8 (42 reviews)</span>
+        </div>
+      </div>
+      <div class="property-price">₹30,000/month</div>
+    </div>
+    
+    <div class="gallery">
+      <div class="main-image">
+        <img src="https://images.pexels.com/photos/24807126/pexels-photo-24807126/free-photo-of-sunbeds-and-pool-in-summer-resort.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sunbeds and Pool in Summer Resort">
+    </div>
+      <div class="small-image">
+        <img src="https://images.pexels.com/photos/20116484/pexels-photo-20116484/free-photo-of-interior-of-a-modern-luxurious-living-room.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Interior of a Modern Luxurious Living Room">
+    </div>
+      <div class="small-image">
+        <img src="https://images.pexels.com/photos/6130060/pexels-photo-6130060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Luxury Villa Image">
+    </div>
+    </div>
+    
+    <div class="content-area">
+      <div class="property-info">
+        <div class="property-details">
+          <h2>Property Details</h2>
+          <div class="features">
+            <div class="feature">
+              <span class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 22v-8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8"></path>
+                  <path d="M18 11V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v7"></path>
+                </svg>
+              </span>
+              <div>
+                <div>4 Beds</div>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </span>
+              <div>
+                <div>3 Baths</div>
+              </div>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                </svg>
+              </span>
+              <div>
+                <div>2,500 sqft</div>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="section-title">Description</h3>
+                    <p>Experience luxurious living in this stunning villa located in the prestigious Salt Lake City area of Kolkata. This modern architectural masterpiece features 4 spacious bedrooms, 3 designer bathrooms, and a generous 2,500 sq ft of living space.</p>
+                    <p>The property boasts floor-to-ceiling windows that flood the interior with natural light, showcasing the open floor plan and high-end finishes. The gourmet kitchen is equipped with premium appliances, custom cabinetry, and a large island perfect for entertaining.</p>
+                    <p>Outside, you'll find beautifully landscaped gardens, a private patio area, and ample parking space. The property is situated in a secure, gated community with 24/7 security, ensuring peace of mind for residents.</p>
+
+          
+          <h3 class="section-title">Amenities</h3>
+          <div class="amenities">
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Air Conditioning</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Fully Furnished</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>High-Speed Internet</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Reserved Parking</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>24/7 Security</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Power Backup</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Gym Access</span>
+            </div>
+            <div class="amenity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Swimming Pool</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="booking-sidebar">
+        <div class="booking-card">
+          <h3>Book this property</h3>
+          <div class="date-picker">
+            <input type="date" class="date-input" placeholder="Move-in Date">
+            <input type="date" class="date-input" placeholder="Move-out Date">
+          </div>
+          
+          <select class="date-input">
+            <option>Rental Duration</option>
+            <option>6 Months</option>
+            <option>12 Months</option>
+            <option>18 Months</option>
+            <option>24 Months</option>
+          </select>
+          
+          <div class="total-price">
+            <span>Monthly Rent:</span>
+            <span class="total-price-value">₹30,000</span>
+          </div>
+          
+          <div class="total-price">
+            <span>Security Deposit:</span>
+            <span class="total-price-value">₹56,000</span>
+          </div>
+          
+          <button class="cta-button">Book Property</button>
+          
+          <div class="owner-info">
+            <div>
+              <div><strong>Abhishek Banerjee</strong></div>
+              <div>Property Owner</div>
+            </div>
+          </div>
+          
+          <button class="contact-button">Contact Owner</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
