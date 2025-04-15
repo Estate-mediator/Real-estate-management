@@ -23,6 +23,99 @@
       margin: 0 auto;
       padding: 20px;
     }
+    /* Feedback Section Styles */
+    .feedback-section {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .feedback-form {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .feedback-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      height: 120px;
+      margin-bottom: 15px;
+      resize: vertical;
+    }
+    
+    .star-rating {
+      display: flex;
+      gap: 5px;
+      margin: 15px 0;
+    }
+    
+    .star-rating svg {
+      cursor: pointer;
+    }
+    
+    .star-rating svg:hover path,
+    .star-rating svg.active path {
+      fill: #ff9800;
+    }
+    
+    .feedback-list {
+      margin-top: 30px;
+    }
+    
+    .feedback-item {
+      padding: 20px 0;
+      border-top: 1px solid #eee;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 15px;
+    }
+    
+    .feedback-item:first-child {
+      border-top: none;
+    }
+    
+    .feedback-user {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .user-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .feedback-content h4 {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .feedback-date {
+      font-size: 12px;
+      color: #999;
+      font-weight: normal;
+    }
+    
+    .feedback-stars {
+      display: flex;
+      gap: 2px;
+      color: #ff9800;
+      margin-bottom: 10px;
+    }
     
     header {
       display: flex;
@@ -409,7 +502,109 @@
           </div>
         </div>
       </div>
-      
+      <!-- Feedback Section -->
+      <div class="feedback-section">
+        <h3 class="section-title">Reviews & Feedback</h3>
+        
+        <!-- Feedback List -->
+        <div class="feedback-list">
+          <!-- Feedback Item 1 -->
+          <div class="feedback-item">
+            <div class="feedback-user">
+              <div class="user-avatar">AS</div>
+              <div>Anita S.</div>
+            </div>
+            <div class="feedback-content">
+              <h4>
+                Excellent Location
+                <span class="feedback-date">March 10, 2025</span>
+              </h4>
+              <div class="feedback-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>I stayed in this apartment for 6 months and had a wonderful experience. The location is perfect, close to shops, restaurants, and parks. The apartment itself is beautifully maintained and the amenities are excellent. The owner was very responsive to any questions or issues.</p>
+            </div>
+          </div>
+          
+          <!-- Feedback Item 2 -->
+          <div class="feedback-item">
+            <div class="feedback-user">
+              <div class="user-avatar">RK</div>
+              <div>Raj K.</div>
+            </div>
+            <div class="feedback-content">
+              <h4>
+                Great Value
+                <span class="feedback-date">February 28, 2025</span>
+              </h4>
+              <div class="feedback-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p>The apartment is spacious and well-designed. The furniture is comfortable and everything is in good condition. The building staff are friendly and helpful. Only minor issue was some occasional noise from the street, but overall a great place to live.</p>
+            </div>
+          </div>
+          
+          <!-- Feedback Item 3 -->
+          <div class="feedback-item">
+            <div class="feedback-user">
+              <div class="user-avatar">PD</div>
+              <div>Priya D.</div>
+            </div>
+            <div class="feedback-content">
+              <h4>
+                Modern & Comfortable
+                <span class="feedback-date">January 15, 2025</span>
+              </h4>
+              <div class="feedback-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <p>This apartment exceeded my expectations in terms of design and comfort. The kitchen is very well equipped, and the bedrooms are a good size. The building amenities, especially the gym and pool, are fantastic. Security is excellent, and I always felt safe. Would definitely recommend!</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Add Feedback Form -->
+        <div class="feedback-form">
+          <h3 class="section-title">Share Your Experience</h3>
+          <input type="text" class="date-input" placeholder="Your Name" style="margin-bottom: 15px;">
+          
+          <div class="star-rating">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          
+          <input type="text" class="date-input" placeholder="Review Title" style="margin-bottom: 15px;">
+          <textarea placeholder="Share your experience with this property..."></textarea>
+          <button class="cta-button">Submit Feedback</button>
+        </div>
+      </div>
+    </div>
+
       <div class="booking-sidebar">
         <div class="booking-card">
           <h3>Book this property</h3>
@@ -450,5 +645,44 @@
       </div>
     </div>
   </div>
+  <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star-rating .star');
+    
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        // Reset all stars
+        stars.forEach(s => {
+          s.setAttribute('fill', 'none');
+          s.setAttribute('stroke', '#ddd');
+        });
+        
+        // Fill clicked star and all stars before it
+        for (let i = 0; i <= index; i++) {
+          stars[i].setAttribute('fill', '#ff9800');
+          stars[i].setAttribute('stroke', '#ff9800');
+          stars[i].classList.add('active');
+        }
+      });
+      
+      star.addEventListener('mouseover', () => {
+        // Preview hover effect
+        for (let i = 0; i <= index; i++) {
+          if (!stars[i].classList.contains('active')) {
+            stars[i].setAttribute('fill', '#ffe0b2');
+          }
+        }
+      });
+      
+      star.addEventListener('mouseout', () => {
+        // Remove preview on mouse out
+        stars.forEach(s => {
+          if (!s.classList.contains('active')) {
+            s.setAttribute('fill', 'none');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
