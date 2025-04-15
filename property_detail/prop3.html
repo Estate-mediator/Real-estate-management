@@ -449,5 +449,44 @@
       </div>
     </div>
   </div>
+  <script>
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star-rating .star');
+    
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        // Reset all stars
+        stars.forEach(s => {
+          s.setAttribute('fill', 'none');
+          s.setAttribute('stroke', '#ddd');
+        });
+        
+        // Fill clicked star and all stars before it
+        for (let i = 0; i <= index; i++) {
+          stars[i].setAttribute('fill', '#ff9800');
+          stars[i].setAttribute('stroke', '#ff9800');
+          stars[i].classList.add('active');
+        }
+      });
+      
+      star.addEventListener('mouseover', () => {
+        // Preview hover effect
+        for (let i = 0; i <= index; i++) {
+          if (!stars[i].classList.contains('active')) {
+            stars[i].setAttribute('fill', '#ffe0b2');
+          }
+        }
+      });
+      
+      star.addEventListener('mouseout', () => {
+        // Remove preview on mouse out
+        stars.forEach(s => {
+          if (!s.classList.contains('active')) {
+            s.setAttribute('fill', 'none');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
