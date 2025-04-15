@@ -689,12 +689,107 @@
     padding: 15px;
     font-size: 14px;
 }
-
-
+ /* Add these styles to your existing CSS */
+        
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            z-index: 200;
+        }
+        
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+        
+        .hamburger-icon span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 150;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .mobile-nav ul li a {
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-light);
+            font-weight: 500;
+        }
+        
+        .mobile-auth-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+/* Media queries */
+@media (max-width: 768px) {
+            .header-container nav,
+            .header-container .auth-buttons {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: block;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header Section Modification -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -714,9 +809,34 @@
                 <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="loginBtn">Login</button></a>
                 <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="signupBtn">Sign Up</button></a>
             </div>
+            
+            <!-- Add Hamburger Menu Button -->
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
     </header>
     
+    <!-- Add Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="mobileLoginBtn">Login</button></a>
+            <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="mobileSignupBtn">Sign Up</button></a>
+        </div>
+    </div>
+    
+    <!-- Add Overlay -->
+    <div class="overlay" id="overlay"></div>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -1194,6 +1314,31 @@
             }
         });
     });
+    document.addEventListener('DOMContentLoaded', function() {
+            // Existing JavaScript code
+            
+            // Hamburger menu functionality
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            
+            function toggleMenu() {
+                mobileNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+            
+            hamburgerMenu.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking on navigation links
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+        });
 </script>
 </body>
 </html>
