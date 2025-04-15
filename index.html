@@ -473,6 +473,153 @@
     color: #777;
 }
 
+.chat-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: var(--primary);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+    
+    .chat-button:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+    }
+    
+    .chat-button i {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+    
+    .chat-popup {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 350px;
+        height: 450px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1001;
+        border: 1px solid #eaeaea;
+    }
+    
+    .chat-popup.active {
+        display: flex;
+    }
+    
+    .chat-header {
+        padding: 15px;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .chat-header h3 {
+        margin: 0;
+        font-size: 16px;
+    }
+    
+    .close-chat {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    .chat-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .message {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    
+    .message.sent {
+        justify-content: flex-end;
+    }
+    
+    .message-content {
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 18px;
+        position: relative;
+    }
+    
+    .message.received .message-content {
+        background-color: #f1f1f1;
+        border-bottom-left-radius: 5px;
+    }
+    
+    .message.sent .message-content {
+        background-color: var(--primary);
+        color: white;
+        border-bottom-right-radius: 5px;
+    }
+    
+    .message-content p {
+        margin: 0;
+        word-wrap: break-word;
+    }
+    
+    .message-time {
+        font-size: 10px;
+        opacity: 0.7;
+        margin-top: 5px;
+        display: block;
+    }
+    
+    .chat-input {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #eaeaea;
+    }
+    
+    .chat-input input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 30px;
+        outline: none;
+    }
+    
+    .chat-input button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .chat-input button:hover {
+        background-color: var(--primary-dark);
+    }
+
+
 /* Footer Styles */
 .footer {
     background-color: #222;
@@ -902,6 +1049,32 @@
     </div>
 </section>
 
+<div class="chat-button" id="chatButton">
+    <i class="fas fa-comments"></i>
+    <span>Chat with Us</span>
+</div>
+
+<!-- Chat popup window -->
+<div class="chat-popup" id="chatPopup">
+    <div class="chat-header">
+        <h3>Dream Estate Support</h3>
+        <button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message received">
+            <div class="message-content">
+                <p>👋 Hello! How can we help you today?</p>
+                <span class="message-time">Just now</span>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message...">
+        <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
@@ -941,3 +1114,77 @@
         <p>&copy; 2025 Dream Estate | All Rights Reserved.</p>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Chat functionality
+        const chatButton = document.getElementById('chatButton');
+        const chatPopup = document.getElementById('chatPopup');
+        const closeChat = document.getElementById('closeChat');
+        const messageInput = document.getElementById('messageInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatMessages = document.getElementById('chatMessages');
+        
+        // Open chat popup
+        chatButton.addEventListener('click', function() {
+            chatPopup.classList.add('active');
+        });
+        
+        // Close chat popup
+        closeChat.addEventListener('click', function() {
+            chatPopup.classList.remove('active');
+        });
+        
+        // Send message function
+        function sendUserMessage() {
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                // Add user message
+                const now = new Date();
+                const timeString = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+                
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message sent';
+                messageElement.innerHTML = `
+                    <div class="message-content">
+                        <p>${message}</p>
+                        <span class="message-time">${timeString}</span>
+                    </div>
+                `;
+                chatMessages.appendChild(messageElement);
+                
+                // Clear input
+                messageInput.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate response after 1 second
+                setTimeout(function() {
+                    const responseElement = document.createElement('div');
+                    responseElement.className = 'message received';
+                    responseElement.innerHTML = `
+                        <div class="message-content">
+                            <p>Thanks for your message! Our team will get back to you shortly.</p>
+                            <span class="message-time">${timeString}</span>
+                        </div>
+                    `;
+                    chatMessages.appendChild(responseElement);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+        
+        // Send message on button click
+        sendMessage.addEventListener('click', sendUserMessage);
+        
+        // Send message on Enter key
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+    });
+</script>
+</body>
+</html>
