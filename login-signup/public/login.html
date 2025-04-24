@@ -304,6 +304,16 @@
             </div>
 
             <form>
+                <!-- Add the missing user type selection -->
+                <div class="user-type">
+                    <label>I am a:</label>
+                    <div class="user-type-options">
+                        <div class="user-option active" data-type="tenant">Tenant</div>
+                        <div class="user-option" data-type="landlord">Landlord</div>
+                        <div class="user-option" data-type="custodian">Custodian</div>
+                    </div>
+                </div>
+                
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" placeholder="Enter your email" required>
@@ -358,7 +368,7 @@
           
           const email = document.getElementById('email').value;
           const password = document.getElementById('password').value;
-          const userType = document.querySelector('.user-option.active').textContent.toLowerCase();
+          const userType = document.querySelector('.user-option.active').getAttribute('data-type');
           
           try {
             const response = await fetch('http://localhost:3000/api/login', {
