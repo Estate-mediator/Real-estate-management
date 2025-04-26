@@ -23,17 +23,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .container {
             display: flex;
-            width: 65%;
-            height: 41rem;
+            width: 95%;
             max-width: 1000px;
+            height: auto;
+            min-height: 500px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
+            position: relative;
         }
 
         .image-container {
@@ -83,15 +85,16 @@
         .signup-form {
             flex: 1;
             background-color: white;
-            padding: 40px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            max-height: 100vh;
+            max-height: 90vh;
             overflow-y: auto;
+            width: 100%;
         }
 
         .signup-header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .signup-header h1 {
@@ -111,13 +114,13 @@
 
         .user-type-options {
             display: flex;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .user-option {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -136,12 +139,12 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 14px;
             color: #555;
             font-weight: 500;
@@ -149,7 +152,7 @@
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 14px;
@@ -174,6 +177,13 @@
             margin-bottom: 20px;
             font-size: 14px;
             color: #666;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .terms input {
+            margin-right: 8px;
+            margin-top: 3px;
         }
 
         .terms a {
@@ -196,6 +206,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .signup-btn:hover {
@@ -230,6 +241,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .social-btn {
@@ -250,7 +262,7 @@
 
         .signin {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
             font-size: 14px;
             color: #666;
         }
@@ -272,8 +284,8 @@
         .tenant-fields.active, .landlord-fields.active, .custodian-fields.active {
             display: block;
         }
-        .homeBtn{
-            /* height: 10px; */
+        
+        .homeBtn {
             position: absolute;
             left: 20px;
             top: 20px;
@@ -287,9 +299,104 @@
             z-index: 1;
             font-size: larger;
             transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .homeBtn:hover{
+        
+        .homeBtn:hover {
             background: rgba(252, 220, 162, 0.7);
+        }
+
+        /* Enhanced responsive styles */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 768px;
+            }
+            
+            .signup-form {
+                padding: 25px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-height: none;
+            }
+            
+            .signup-form {
+                max-height: none;
+                padding: 25px 20px;
+            }
+            
+            .signup-header h1 {
+                font-size: 24px;
+            }
+            
+            .homeBtn {
+                position: fixed;
+                left: 15px;
+                top: 15px;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 8px;
+                width: 100%;
+            }
+            
+            .signup-form {
+                padding: 20px 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .user-type-options {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                margin-bottom: 12px;
+            }
+            
+            .form-group input, .form-group select {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .terms {
+                margin-bottom: 15px;
+            }
+            
+            .signup-btn {
+                padding: 10px;
+            }
+        }
+        
+        @media (max-width: 350px) {
+            .signup-form {
+                padding: 15px 12px;
+            }
+            
+            .signup-header h1 {
+                font-size: 20px;
+            }
+            
+            .homeBtn {
+                width: 2.2rem;
+                height: 2.2rem;
+            }
         }
     </style>
 </head>

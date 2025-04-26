@@ -19,20 +19,22 @@
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 15px;
         }
 
         .container {
             display: flex;
-            width: 80%;
-            height: 42rem;
+            width: 95%;
             max-width: 900px;
+            min-height: 500px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
+            position: relative;
         }
 
         .image-container {
@@ -86,6 +88,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 100%;
         }
 
         .login-header {
@@ -135,6 +138,8 @@
             align-items: center;
             margin-bottom: 20px;
             font-size: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .remember label {
@@ -166,6 +171,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
         }
 
         .login-btn:hover {
@@ -200,6 +206,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .social-btn {
@@ -242,7 +249,7 @@
         .user-type-options {
             display: flex;
             margin-top: 15px;
-            gap: 20px;
+            gap: 10px;
         }
 
         .user-option {
@@ -253,6 +260,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 14px;
         }
 
         .user-option.active {
@@ -264,8 +272,8 @@
         .user-option:hover:not(.active) {
             border-color: #4c84ff;
         }
-        .homeBtn{
-            /* height: 10px; */
+        
+        .homeBtn {
             position: absolute;
             left: 20px;
             top: 20px;
@@ -279,9 +287,112 @@
             z-index: 1;
             font-size: larger;
             transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .homeBtn:hover{
+        
+        .homeBtn:hover {
             background: rgba(252, 220, 162, 0.7);
+        }
+
+        /* Improved responsive styles */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 700px;
+            }
+            
+            .login-form {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                flex-direction: column;
+                max-height: none;
+            }
+            
+            .homeBtn {
+                position: fixed;
+                left: 15px;
+                top: 15px;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            .login-form {
+                padding: 25px 20px;
+            }
+            
+            .login-header h1 {
+                font-size: 24px;
+            }
+            
+            .user-type-options {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                width: 100%;
+                border-radius: 8px;
+                min-height: auto;
+            }
+            
+            .login-form {
+                padding: 20px 15px;
+            }
+            
+            .login-header h1 {
+                font-size: 22px;
+            }
+            
+            .form-group input {
+                padding: 10px 12px;
+            }
+            
+            .remember {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .user-type-options {
+                flex-direction: column;
+            }
+            
+            .user-option {
+                padding: 10px;
+            }
+            
+            .branding h2 {
+                font-size: 24px;
+            }
+            
+            .branding p {
+                font-size: 14px;
+            }
+            
+            .homeBtn {
+                width: 2.2rem;
+                height: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 350px) {
+            .login-form {
+                padding: 15px 12px;
+            }
+            
+            .login-header h1 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -304,7 +415,7 @@
             </div>
 
             <form>
-                <!-- Add the missing user type selection -->
+                <!-- User type selection -->
                 <div class="user-type">
                     <label>I am a:</label>
                     <div class="user-type-options">
@@ -339,9 +450,9 @@
             </div>
 
             <div class="social-login">
-                <div class="social-btn">G</div>
-                <div class="social-btn">f</div>
-                <div class="social-btn">in</div>
+                <div class="social-btn"><i class="fab fa-google"></i></div>
+                <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+                <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
             </div>
 
             <div class="signup">
@@ -351,7 +462,7 @@
     </div>
 
     <script>
-        // Simple script to handle user type selection
+        // Handle user type selection
         document.querySelectorAll('.user-option').forEach(option => {
             option.addEventListener('click', function() {
                 document.querySelectorAll('.user-option').forEach(opt => {
@@ -360,8 +471,7 @@
                 this.classList.add('active');
             });
         });
-    </script>
-    <script>
+        
         // Handle login form submission
         document.querySelector('form').addEventListener('submit', async function(e) {
           e.preventDefault();
@@ -395,6 +505,6 @@
             alert('An error occurred. Please try again later.');
           }
         });
-      </script>
+    </script>
 </body>
 </html>
