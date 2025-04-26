@@ -336,6 +336,30 @@
       color: #ff9800;
       margin-bottom: 10px;
     }
+
+    .alert {
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .alert-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .hidden {
+      display: none;
+    }
+    
     @media (max-width: 900px) {
       .gallery {
         grid-template-columns: 1fr;
@@ -379,7 +403,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff9800" stroke="#ff9800">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
           </svg>
-          <span>4.8 (42 reviews)</span>
+          <span id="average-rating">4.8 (42 reviews)</span>
         </div>
       </div>
       <div class="property-price">₹28,000/month</div>
@@ -505,100 +529,40 @@
         <h3 class="section-title">Reviews & Feedback</h3>
         
         <!-- Feedback List -->
-        <div class="feedback-list">
-          <!-- Feedback Item 1 -->
-          <div class="feedback-item">
-            <div class="feedback-user">
-              <div class="user-avatar">AS</div>
-              <div>Anita S.</div>
-            </div>
-            <div class="feedback-content">
-              <h4>
-                Excellent Location
-                <span class="feedback-date">March 10, 2025</span>
-              </h4>
-              <div class="feedback-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p>I stayed in this apartment for 6 months and had a wonderful experience. The location is perfect, close to shops, restaurants, and parks. The apartment itself is beautifully maintained and the amenities are excellent. The owner was very responsive to any questions or issues.</p>
-            </div>
-          </div>
-          
-          <!-- Feedback Item 2 -->
-          <div class="feedback-item">
-            <div class="feedback-user">
-              <div class="user-avatar">RK</div>
-              <div>Raj K.</div>
-            </div>
-            <div class="feedback-content">
-              <h4>
-                Great Value
-                <span class="feedback-date">February 28, 2025</span>
-              </h4>
-              <div class="feedback-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-              <p>The apartment is spacious and well-designed. The furniture is comfortable and everything is in good condition. The building staff are friendly and helpful. Only minor issue was some occasional noise from the street, but overall a great place to live.</p>
-            </div>
-          </div>
-          
-          <!-- Feedback Item 3 -->
-          <div class="feedback-item">
-            <div class="feedback-user">
-              <div class="user-avatar">PD</div>
-              <div>Priya D.</div>
-            </div>
-            <div class="feedback-content">
-              <h4>
-                Modern & Comfortable
-                <span class="feedback-date">January 15, 2025</span>
-              </h4>
-              <div class="feedback-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-              </div>
-              <p>This apartment exceeded my expectations in terms of design and comfort. The kitchen is very well equipped, and the bedrooms are a good size. The building amenities, especially the gym and pool, are fantastic. Security is excellent, and I always felt safe. Would definitely recommend!</p>
-            </div>
+        <div class="feedback-list" id="feedback-list">
+          <!-- Reviews will be loaded dynamically -->
+          <div class="feedback-item loading-message">
+            <p>Loading reviews...</p>
           </div>
         </div>
         
         <!-- Add Feedback Form -->
         <div class="feedback-form">
           <h3 class="section-title">Share Your Experience</h3>
-          <input type="text" class="date-input" placeholder="Your Name" style="margin-bottom: 15px;">
+          <div id="alert-message" class="alert hidden"></div>
+          <input type="text" id="reviewer-name" class="date-input" placeholder="Your Name" style="margin-bottom: 15px;" required>
           
-          <div class="star-rating">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+          <div class="star-rating" id="star-rating">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="1">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="2">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="3">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="4">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="5">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </div>
           
-          <input type="text" class="date-input" placeholder="Review Title" style="margin-bottom: 15px;">
-          <textarea placeholder="Share your experience with this property..."></textarea>
-          <button class="cta-button">Submit Feedback</button>
+          <input type="text" id="review-title" class="date-input" placeholder="Review Title" style="margin-bottom: 15px;" required>
+          <textarea id="review-comment" placeholder="Share your experience with this property..." required></textarea>
+          <button id="submit-review" class="cta-button">Submit Feedback</button>
         </div>
       </div>
 </div>
@@ -644,6 +608,10 @@
     </div>
   </div>
   <script>
+    // Property ID - this would typically come from your database
+    const propertyId = "6462a8f9e4b0a6d8f1234567"; // Example ID for property 1
+    let currentRating = 0;
+    
     // Star rating functionality
     const stars = document.querySelectorAll('.star-rating .star');
     
@@ -653,10 +621,12 @@
         stars.forEach(s => {
           s.setAttribute('fill', 'none');
           s.setAttribute('stroke', '#ddd');
+          s.classList.remove('active');
         });
         
         // Fill clicked star and all stars before it
-        for (let i = 0; i <= index; i++) {
+        currentRating = parseInt(star.getAttribute('data-value'));
+        for (let i = 0; i < currentRating; i++) {
           stars[i].setAttribute('fill', '#ff9800');
           stars[i].setAttribute('stroke', '#ff9800');
           stars[i].classList.add('active');
@@ -665,7 +635,8 @@
       
       star.addEventListener('mouseover', () => {
         // Preview hover effect
-        for (let i = 0; i <= index; i++) {
+        const value = parseInt(star.getAttribute('data-value'));
+        for (let i = 0; i < value; i++) {
           if (!stars[i].classList.contains('active')) {
             stars[i].setAttribute('fill', '#ffe0b2');
           }
@@ -680,8 +651,152 @@
           }
         });
       });
-    });
-  </script>
-</body>
+    });
 
+    // Function to format date
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+
+    // Function to create review HTML
+    function createReviewElement(review) {
+      const initials = review.name.split(' ').map(n => n[0]).join('').toUpperCase();
+      
+      const reviewElement = document.createElement('div');
+      reviewElement.className = 'feedback-item';
+      
+      // Create star icons based on rating
+      let starsHTML = '';
+      for (let i = 0; i < 5; i++) {
+        if (i < review.rating) {
+          starsHTML += '<i class="fas fa-star"></i>';
+        } else {
+          starsHTML += '<i class="far fa-star"></i>';
+        }
+      }
+      
+      reviewElement.innerHTML = `
+        <div class="feedback-user">
+          <div class="user-avatar">${initials}</div>
+          <div>${review.name}</div>
+        </div>
+        <div class="feedback-content">
+          <h4>
+            ${review.title}
+            <span class="feedback-date">${formatDate(review.createdAt)}</span>
+          </h4>
+          <div class="feedback-stars">
+            ${starsHTML}
+          </div>
+          <p>${review.comment}</p>
+        </div>
+      `;
+      
+      return reviewElement;
+    }
+
+// Function to load reviews
+async function loadReviews() {
+  try {
+    // Get reviews from localStorage
+    const storedReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
+    
+    const feedbackList = document.getElementById('feedback-list');
+    feedbackList.innerHTML = '';
+    
+    if (storedReviews.length > 0) {
+      // Update average rating
+      const totalRating = storedReviews.reduce((sum, review) => sum + review.rating, 0);
+      const averageRating = (totalRating / storedReviews.length).toFixed(1);
+      document.getElementById('average-rating').textContent = `${averageRating} (${storedReviews.length} reviews)`;
+      
+      // Add reviews to the list
+      storedReviews.forEach(review => {
+        feedbackList.appendChild(createReviewElement(review));
+      });
+    } else {
+      feedbackList.innerHTML = '<p>No reviews yet. Be the first to leave a review!</p>';
+    }
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+    document.getElementById('feedback-list').innerHTML = '<p>Failed to load reviews. Please try again later.</p>';
+  }
+}
+
+// Function to submit a review
+async function submitReview() {
+  const name = document.getElementById('reviewer-name').value;
+  const title = document.getElementById('review-title').value;
+  const comment = document.getElementById('review-comment').value;
+  const alertMessage = document.getElementById('alert-message');
+  
+  // Validate inputs
+  if (!name || !title || !comment || currentRating === 0) {
+    alertMessage.textContent = 'Please fill all fields and select a rating';
+    alertMessage.className = 'alert alert-error';
+    alertMessage.classList.remove('hidden');
+    return;
+  }
+  
+  try {
+    // Create review object
+    const review = {
+      propertyId,
+      name,
+      title,
+      rating: currentRating,
+      comment,
+      createdAt: new Date().toISOString()
+    };
+    
+    // Get existing reviews from localStorage
+    const existingReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
+    
+    // Add new review
+    existingReviews.push(review);
+    
+    // Save back to localStorage
+    localStorage.setItem(`reviews_${propertyId}`, JSON.stringify(existingReviews));
+    
+    // Clear form
+    document.getElementById('reviewer-name').value = '';
+    document.getElementById('review-title').value = '';
+    document.getElementById('review-comment').value = '';
+    
+    // Reset stars
+    stars.forEach(s => {
+      s.setAttribute('fill', 'none');
+      s.setAttribute('stroke', '#ddd');
+      s.classList.remove('active');
+    });
+    currentRating = 0;
+    
+    // Show success message
+    alertMessage.textContent = 'Review submitted successfully!';
+    alertMessage.className = 'alert alert-success';
+    alertMessage.classList.remove('hidden');
+    
+    // Reload reviews
+    loadReviews();
+    
+    // Hide message after 3 seconds
+    setTimeout(() => {
+      alertMessage.classList.add('hidden');
+    }, 3000);
+  } catch (error) {
+    console.error('Error submitting review:', error);
+    alertMessage.textContent = error.message || 'Failed to submit review. Please try again.';
+    alertMessage.className = 'alert alert-error';
+    alertMessage.classList.remove('hidden');
+  }
+}
+
+    // Add event listener to submit button
+    document.getElementById('submit-review').addEventListener('click', submitReview);
+
+    // Load reviews when page loads
+    document.addEventListener('DOMContentLoaded', loadReviews);
+  </script>
+</body>
 </html>

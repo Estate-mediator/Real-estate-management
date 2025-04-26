@@ -23,6 +23,7 @@ app.use(cors())
 // Routes
 app.use("/api", require("./routes/userRoutes"))
 app.use("/api/properties", require("./routes/propertyRoutes"))
+app.use("/api/reviews", require("./routes/reviewRoutes")) // Add reviews routes
 
 // Handle 404
 app.use((req, res) => {

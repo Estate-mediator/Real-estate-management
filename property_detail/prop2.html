@@ -581,19 +581,19 @@
           <input type="text" class="date-input" placeholder="Your Name" style="margin-bottom: 15px;">
           
           <div class="star-rating">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="1">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="2">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="3">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="4">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="5">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </div>
@@ -646,43 +646,188 @@
     </div>
   </div>
   <script>
-    // Star rating functionality
-    const stars = document.querySelectorAll('.star-rating .star');
+  // Property ID - this would typically come from your database
+  const propertyId = "6462a8f9e4b0a6d8f1234569"; // Example ID for property 2
+  let currentRating = 0;
+  
+  // Star rating functionality
+  const stars = document.querySelectorAll('.star-rating .star');
+  
+  stars.forEach((star, index) => {
+    // Add data-value attributes to stars if they don't have them
+    if (!star.hasAttribute('data-value')) {
+      star.setAttribute('data-value', index + 1);
+    }
     
-    stars.forEach((star, index) => {
-      star.addEventListener('click', () => {
-        // Reset all stars
-        stars.forEach(s => {
+    star.addEventListener('click', () => {
+      // Reset all stars
+      stars.forEach(s => {
+        s.setAttribute('fill', 'none');
+        s.setAttribute('stroke', '#ddd');
+        s.classList.remove('active');
+      });
+      
+      // Fill clicked star and all stars before it
+      currentRating = parseInt(star.getAttribute('data-value'));
+      for (let i = 0; i < currentRating; i++) {
+        stars[i].setAttribute('fill', '#ff9800');
+        stars[i].setAttribute('stroke', '#ff9800');
+        stars[i].classList.add('active');
+      }
+    });
+    
+    star.addEventListener('mouseover', () => {
+      // Preview hover effect
+      const value = parseInt(star.getAttribute('data-value'));
+      for (let i = 0; i < value; i++) {
+        if (!stars[i].classList.contains('active')) {
+          stars[i].setAttribute('fill', '#ffe0b2');
+        }
+      }
+    });
+    
+    star.addEventListener('mouseout', () => {
+      // Remove preview on mouse out
+      stars.forEach(s => {
+        if (!s.classList.contains('active')) {
           s.setAttribute('fill', 'none');
-          s.setAttribute('stroke', '#ddd');
-        });
-        
-        // Fill clicked star and all stars before it
-        for (let i = 0; i <= index; i++) {
-          stars[i].setAttribute('fill', '#ff9800');
-          stars[i].setAttribute('stroke', '#ff9800');
-          stars[i].classList.add('active');
         }
-      });
-      
-      star.addEventListener('mouseover', () => {
-        // Preview hover effect
-        for (let i = 0; i <= index; i++) {
-          if (!stars[i].classList.contains('active')) {
-            stars[i].setAttribute('fill', '#ffe0b2');
-          }
-        }
-      });
-      
-      star.addEventListener('mouseout', () => {
-        // Remove preview on mouse out
-        stars.forEach(s => {
-          if (!s.classList.contains('active')) {
-            s.setAttribute('fill', 'none');
-          }
-        });
       });
     });
-  </script>
+  });
+
+  // Function to format date
+  function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  }
+
+  // Function to create review HTML
+  function createReviewElement(review) {
+    const initials = review.name.split(' ').map(n => n[0]).join('').toUpperCase();
+    
+    const reviewElement = document.createElement('div');
+    reviewElement.className = 'feedback-item';
+    
+    // Create star icons based on rating
+    let starsHTML = '';
+    for (let i = 0; i < 5; i++) {
+      if (i < review.rating) {
+        starsHTML += '<i class="fas fa-star"></i>';
+      } else {
+        starsHTML += '<i class="far fa-star"></i>';
+      }
+    }
+    
+    reviewElement.innerHTML = `
+      <div class="feedback-user">
+        <div class="user-avatar">${initials}</div>
+        <div>${review.name}</div>
+      </div>
+      <div class="feedback-content">
+        <h4>
+          ${review.title}
+          <span class="feedback-date">${formatDate(review.createdAt)}</span>
+        </h4>
+        <div class="feedback-stars">
+          ${starsHTML}
+        </div>
+        <p>${review.comment}</p>
+      </div>
+    `;
+    
+    return reviewElement;
+  }
+
+  // Function to load reviews
+  function loadReviews() {
+    try {
+      // Get reviews from localStorage
+      const storedReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
+      
+      const feedbackList = document.querySelector('.feedback-list');
+      
+      // Keep the existing example reviews
+      const existingReviews = Array.from(feedbackList.querySelectorAll('.feedback-item'));
+      
+      // Add new reviews from localStorage
+      if (storedReviews.length > 0) {
+        storedReviews.forEach(review => {
+          feedbackList.appendChild(createReviewElement(review));
+        });
+      }
+    } catch (error) {
+      console.error('Error loading reviews:', error);
+    }
+  }
+
+  // Function to submit a review
+  function submitReview() {
+    const nameInput = document.querySelector('.feedback-form input[placeholder="Your Name"]');
+    const titleInput = document.querySelector('.feedback-form input[placeholder="Review Title"]');
+    const commentInput = document.querySelector('.feedback-form textarea');
+    
+    const name = nameInput.value;
+    const title = titleInput.value;
+    const comment = commentInput.value;
+    
+    // Validate inputs
+    if (!name || !title || !comment || currentRating === 0) {
+      alert('Please fill all fields and select a rating');
+      return;
+    }
+    
+    try {
+      // Create review object
+      const review = {
+        propertyId,
+        name,
+        title,
+        rating: currentRating,
+        comment,
+        createdAt: new Date().toISOString()
+      };
+      
+      // Get existing reviews from localStorage
+      const existingReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
+      
+      // Add new review
+      existingReviews.push(review);
+      
+      // Save back to localStorage
+      localStorage.setItem(`reviews_${propertyId}`, JSON.stringify(existingReviews));
+      
+      // Clear form
+      nameInput.value = '';
+      titleInput.value = '';
+      commentInput.value = '';
+      
+      // Reset stars
+      stars.forEach(s => {
+        s.setAttribute('fill', 'none');
+        s.setAttribute('stroke', '#ddd');
+        s.classList.remove('active');
+      });
+      currentRating = 0;
+      
+      // Show success message
+      alert('Review submitted successfully!');
+      
+      // Add the new review to the list
+      const feedbackList = document.querySelector('.feedback-list');
+      feedbackList.appendChild(createReviewElement(review));
+      
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('Failed to submit review. Please try again.');
+    }
+  }
+
+  // Add event listener to submit button
+  document.querySelector('.feedback-form .cta-button').addEventListener('click', submitReview);
+
+  // Load reviews when page loads
+  document.addEventListener('DOMContentLoaded', loadReviews);
+</script>
 </body>
 </html>
