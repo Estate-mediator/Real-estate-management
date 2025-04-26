@@ -386,7 +386,7 @@
               localStorage.setItem('user', JSON.stringify(data.user));
               alert('Login successful!');
               // Redirect to dashboard based on user type
-              window.location.href = `/dashboard/${userType}-dashboard.html`;
+              window.location.href = `/public/dashboard/${userType}-dashboard.html`;
             } else {
               alert(data.message || 'Login failed. Please try again.');
             }
