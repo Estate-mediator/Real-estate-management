@@ -786,6 +786,90 @@
                 font-size: 20px;
             }
         }
+        .feature-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    animation: fadeIn 0.3s;
+}
+
+.feature-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s;
+    text-align: center;
+}
+
+.feature-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.feature-modal-close:hover,
+.feature-modal-close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+/* Add this to make feature cards look clickable */
+.feature-card {
+    cursor: pointer;
+}
+.profile-button {
+    position: relative;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    width: 150px;
+    display: none;
+    z-index: 101;
+    overflow: hidden;
+}
+
+.profile-button:hover .profile-dropdown {
+    display: block;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.profile-dropdown a:hover {
+    background-color: var(--gray-light);
+}
     </style>
 </head>
 <body>
@@ -809,6 +893,15 @@
                 <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="loginBtn">Login</button></a>
                 <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="signupBtn">Sign Up</button></a>
             </div>
+            <div class="profile-button" id="profileButton" style="display: none;">
+    <button class="btn btn-primary" id="profileBtn">
+        <i class="fas fa-user-circle"></i> My Profile
+    </button>
+    <div class="profile-dropdown">
+        <a href="#" id="dashboardLink">Dashboard</a>
+        <a href="#" id="logoutBtn">Logout</a>
+    </div>
+</div>
             
             <!-- Add Hamburger Menu Button -->
             <div class="hamburger-menu" id="hamburgerMenu">
@@ -833,6 +926,10 @@
             <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="mobileLoginBtn">Login</button></a>
             <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="mobileSignupBtn">Sign Up</button></a>
         </div>
+        <div class="profile-mobile" id="profileMobile" style="display: none;">
+    <a href="#" id="mobileDashboardLink"><button class="btn btn-primary">Dashboard</button></a>
+    <button class="btn btn-outline" id="mobileLogoutBtn">Logout</button>
+</div>
     </div>
     
     <!-- Add Overlay -->
@@ -1202,6 +1299,14 @@
     </div>
 </div>
 
+<div id="featureModal" class="feature-modal">
+    <div class="feature-modal-content">
+        <span class="feature-modal-close">&times;</span>
+        <h2 id="featureModalTitle">Feature Coming Soon</h2>
+        <p id="featureModalMessage">We apologize for the inconvenience. This feature is currently under development and will be available soon!</p>
+    </div>
+</div>
+
 
 <!-- Footer -->
 <footer class="footer" id="contact">
@@ -1245,6 +1350,47 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Check if user is logged in
+        const user = JSON.parse(localStorage.getItem('user') || 'null');
+        const authButtons = document.querySelector('.auth-buttons');
+        const profileButton = document.getElementById('profileButton');
+        const mobileAuthButtons = document.querySelector('.mobile-auth-buttons');
+        const profileMobile = document.getElementById('profileMobile');
+        const dashboardLink = document.getElementById('dashboardLink');
+        const mobileDashboardLink = document.getElementById('mobileDashboardLink');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+        
+        // Update UI based on login status
+        if (user) {
+            // User is logged in
+            authButtons.style.display = 'none';
+            profileButton.style.display = 'block';
+            
+            // Update mobile view
+            mobileAuthButtons.style.display = 'none';
+            profileMobile.style.display = 'flex';
+            profileMobile.style.flexDirection = 'column';
+            profileMobile.style.gap = '10px';
+            
+            // Set dashboard link based on user type
+            const dashboardUrl = `./public/dashboard/${user.userType}-dashboard.html`;
+            dashboardLink.href = dashboardUrl;
+            mobileDashboardLink.href = dashboardUrl;
+            
+            // Handle logout
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('user');
+                window.location.reload();
+            });
+            
+            mobileLogoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('user');
+                window.location.reload();
+            });
+        }
+        
         // Chat functionality
         const chatButton = document.getElementById('chatButton');
         const chatPopup = document.getElementById('chatPopup');
@@ -1312,32 +1458,68 @@
                 sendUserMessage();
             }
         });
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-            // Existing JavaScript code
-            
-            // Hamburger menu functionality
-            const hamburgerMenu = document.getElementById('hamburgerMenu');
-            const mobileNav = document.getElementById('mobileNav');
-            const overlay = document.getElementById('overlay');
-            
-            function toggleMenu() {
-                mobileNav.classList.toggle('active');
-                overlay.classList.toggle('active');
-            }
-            
-            hamburgerMenu.addEventListener('click', toggleMenu);
-            overlay.addEventListener('click', toggleMenu);
-            
-            // Close menu when clicking on navigation links
-            const mobileNavLinks = mobileNav.querySelectorAll('a');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.remove('active');
-                    overlay.classList.remove('active');
-                });
+        
+        // Hamburger menu functionality
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleMenu() {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        hamburgerMenu.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking on navigation links
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
             });
         });
+    });
+</script>
+<script>
+    // Feature modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the modal
+        const modal = document.getElementById('featureModal');
+        const modalTitle = document.getElementById('featureModalTitle');
+        const modalMessage = document.getElementById('featureModalMessage');
+        const closeBtn = document.querySelector('.feature-modal-close');
+        
+        // Get all feature cards
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        // When the user clicks on a feature card, open the modal
+        featureCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const featureTitle = this.querySelector('.feature-title').textContent;
+                
+                // Set modal content
+                modalTitle.textContent = featureTitle + " - Coming Soon";
+                modalMessage.textContent = "We apologize for the inconvenience. The " + featureTitle + " feature is currently under development and will be available soon!";
+                
+                // Display the modal
+                modal.style.display = "block";
+            });
+        });
+        
+        // When the user clicks on the close button, close the modal
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
 </script>
 </body>
 </html>

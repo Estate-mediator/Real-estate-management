@@ -492,11 +492,12 @@
             const data = await response.json();
             
             if (data.success) {
-              // Store user data in local storage or session
+              // Store user data in local storage
               localStorage.setItem('user', JSON.stringify(data.user));
               alert('Login successful!');
-              // Redirect to dashboard based on user type
-              window.location.href = `/frontend/public/dashboard/${userType}-dashboard.html`;
+              
+              // Redirect directly to the dashboard based on user type
+              window.location.href = `../../public/dashboard/${userType}-dashboard.html`;
             } else {
               alert(data.message || 'Login failed. Please try again.');
             }
