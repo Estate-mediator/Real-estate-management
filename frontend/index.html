@@ -893,9 +893,10 @@
                 <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="loginBtn">Login</button></a>
                 <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="signupBtn">Sign Up</button></a>
             </div>
-            <div class="profile-button" id="profileButton" style="display: none;">
+            
+<div class="profile-button" id="profileButton" style="display: none;">
     <button class="btn btn-primary" id="profileBtn">
-        <i class="fas fa-user-circle"></i> My Profile
+        <i class="fas fa-user-circle"></i> <span id="profileBtnText">My Profile</span>
     </button>
     <div class="profile-dropdown">
         <a href="#" id="dashboardLink">Dashboard</a>
@@ -927,6 +928,7 @@
             <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="mobileSignupBtn">Sign Up</button></a>
         </div>
         <div class="profile-mobile" id="profileMobile" style="display: none;">
+    <div id="mobileUserName" style="text-align: center; margin-bottom: 10px; font-weight: bold;"></div>
     <a href="#" id="mobileDashboardLink"><button class="btn btn-primary">Dashboard</button></a>
     <button class="btn btn-outline" id="mobileLogoutBtn">Logout</button>
 </div>
@@ -959,7 +961,7 @@
                         <option value="">All Types</option>
                         <option value="apartment">Apartment</option>
                         <option value="house">House</option>
-                        <option value="villa">Villa</option>
+                        <option value="villa">Villa</Villa>
                         <option value="pg">PG/Hostel</option>
                     </select>
                 </div>
@@ -1354,6 +1356,7 @@
         const user = JSON.parse(localStorage.getItem('user') || 'null');
         const authButtons = document.querySelector('.auth-buttons');
         const profileButton = document.getElementById('profileButton');
+        const profileBtnText = document.getElementById('profileBtnText');
         const mobileAuthButtons = document.querySelector('.mobile-auth-buttons');
         const profileMobile = document.getElementById('profileMobile');
         const dashboardLink = document.getElementById('dashboardLink');
@@ -1367,12 +1370,23 @@
             authButtons.style.display = 'none';
             profileButton.style.display = 'block';
             
+            // Update profile button text with user's name
+            if (user.firstName) {
+                profileBtnText.textContent = user.firstName;
+            }
+            
+            // Update mobile profile with user's name
+            const mobileUserName = document.getElementById('mobileUserName');
+            if (mobileUserName && user.firstName && user.lastName) {
+                mobileUserName.textContent = `${user.firstName} ${user.lastName}`;
+            }
+            
             // Update mobile view
             mobileAuthButtons.style.display = 'none';
             profileMobile.style.display = 'flex';
             profileMobile.style.flexDirection = 'column';
             profileMobile.style.gap = '10px';
-            
+        
             // Set dashboard link based on user type
             const dashboardUrl = `./public/dashboard/${user.userType}-dashboard.html`;
             dashboardLink.href = dashboardUrl;
@@ -1480,6 +1494,14 @@
                 overlay.classList.remove('active');
             });
         });
+    // Search button functionality
+const searchButton = document.querySelector('.search-button');
+if (searchButton) {
+    searchButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('We apologize, but the search functionality is currently under development. Please check back soon for this feature!');
+    });
+}
     });
 </script>
 <script>

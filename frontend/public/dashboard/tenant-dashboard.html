@@ -83,6 +83,8 @@
 
         .sidebar-menu {
             padding: 20px 0;
+            padding-bottom: 80px; /* Add space at the bottom to prevent overlap with user profile */
+            overflow-y: auto;
         }
 
         .menu-category {
@@ -121,6 +123,7 @@
             bottom: 0;
             width: 100%;
             background-color: var(--white);
+            z-index: 10;
         }
 
         .user-avatar {
@@ -806,12 +809,12 @@
             </div>
             
             <div class="user-profile">
-                <div class="user-avatar">JS</div>
+                <div class="user-avatar" id="userInitials">JS</div>
                 <div class="user-info">
-                    <div class="user-name">John Smith</div>
+                    <div class="user-name" id="userName">John Smith</div>
                     <div class="user-role">Tenant</div>
                 </div>
-                <div class="logout-btn">
+                <div class="logout-btn" id="logoutButton">
                     <i class="fas fa-sign-out-alt"></i>
                 </div>
             </div>
@@ -1076,5 +1079,691 @@
             document.getElementById('mainContent').classList.toggle('sidebar-expanded');
         });
     </script>
-</body>
-</html>
+<script>
+    // Get user data from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('user') || 'null');
+        
+        if (user) {
+            // Update user name in sidebar
+            const userName = document.getElementById('userName');
+            const userInitials = document.getElementById('userInitials');
+            
+            if (userName && user.firstName && user.lastName) {
+                userName.textContent = `${user.firstName} ${user.lastName}`;
+                userInitials.textContent = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
+            }
+            
+            // Add logout functionality
+            const logoutButton = document.getElementById('logoutButton');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    localStorage.removeItem('user');
+                    window.location.href = '../../index.html';
+                });
+            }
+
+            // Create content container for dynamic content
+            const mainContent = document.getElementById('mainContent');
+            const dynamicContent = document.createElement('div');
+            dynamicContent.id = 'dynamicContent';
+            
+            // Add "Coming Soon" functionality for main and rental sections
+            const browsePropertiesLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item + .menu-item');
+            const savedPropertiesLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item + .menu-item + .menu-item');
+            const myLeaseLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item');
+            const paymentsLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item');
+            const maintenanceLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item + .menu-item');
+            
+            // Function to show coming soon message with proper formatting
+            function showComingSoon(e, sectionName) {
+                e.preventDefault();
+                
+                // Clear any active menu items
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Set this menu item as active
+                e.currentTarget.classList.add('active');
+                
+                // Save current scroll position
+                const scrollPosition = window.scrollY;
+                
+                // Replace main content with coming soon message
+                const originalContent = mainContent.innerHTML;
+                mainContent.innerHTML = `
+                    <div class="dashboard-header">
+                        <div class="page-title">
+                            <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
+                            ${sectionName}
+                        </div>
+                    </div>
+                    <div class="section" style="text-align: center; padding: 50px 20px;">
+                        <div style="font-size: 72px; color: var(--primary); margin-bottom: 20px;">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h2 style="font-size: 24px; margin-bottom: 15px;">Coming Soon</h2>
+                        <p style="font-size: 16px; max-width: 600px; margin: 0 auto 20px auto; color: var(--gray);">
+                            We're working hard to bring you the ${sectionName} feature. This section is currently under development and will be available soon.
+                        </p>
+                        <p style="font-size: 14px; color: var(--gray);">
+                            Thank you for your patience and understanding.
+                        </p>
+                    </div>
+                `;
+                
+                // Re-add sidebar toggle functionality
+                document.getElementById('sidebarToggle').addEventListener('click', function() {
+                    document.getElementById('sidebar').classList.toggle('expanded');
+                    document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Add event listeners to main and rental menu items
+            if (browsePropertiesLink) {
+                browsePropertiesLink.addEventListener('click', (e) => showComingSoon(e, 'Browse Properties'));
+            }
+            
+            if (savedPropertiesLink) {
+                savedPropertiesLink.addEventListener('click', (e) => showComingSoon(e, 'Saved Properties'));
+            }
+            
+            if (myLeaseLink) {
+                myLeaseLink.addEventListener('click', (e) => showComingSoon(e, 'My Lease'));
+            }
+            
+            if (paymentsLink) {
+                paymentsLink.addEventListener('click', (e) => showComingSoon(e, 'Payments'));
+            }
+            
+            if (maintenanceLink) {
+                maintenanceLink.addEventListener('click', (e) => showComingSoon(e, 'Maintenance'));
+            }
+            
+            // Make account section work properly
+            const profileLink = document.querySelector('.menu-category:nth-of-type(3) + .menu-item');
+            const settingsLink = document.querySelector('.menu-category:nth-of-type(3) + .menu-item + .menu-item');
+            
+            if (profileLink) {
+                profileLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Clear any active menu items
+                    document.querySelectorAll('.menu-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Set this menu item as active
+                    e.currentTarget.classList.add('active');
+                    
+                    // Replace main content with profile page
+                    mainContent.innerHTML = `
+                        <div class="dashboard-header">
+                            <div class="page-title">
+                                <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
+                                Profile
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="section-header">
+                                <div class="section-title">Personal Information</div>
+                                <a href="#" class="section-action" id="editProfileBtn">Edit</a>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start;">
+                                <div style="text-align: center;">
+                                    <div style="width: 150px; height: 150px; background-color: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 20px auto;">
+                                        ${user.firstName.charAt(0)}${user.lastName.charAt(0)}
+                                    </div>
+                                    <button class="task-action-btn btn-start" style="margin-top: 10px;">Upload Photo</button>
+                                </div>
+                                
+                                <div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                        <div>
+                                            <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">First Name</label>
+                                            <div style="font-weight: 500;">${user.firstName || 'Not provided'}</div>
+                                        </div>
+                                        <div>
+                                            <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Last Name</label>
+                                            <div style="font-weight: 500;">${user.lastName || 'Not provided'}</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Email Address</label>
+                                        <div style="font-weight: 500;">${user.email || 'Not provided'}</div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Phone Number</label>
+                                        <div style="font-weight: 500;">${user.phone || 'Not provided'}</div>
+                                    </div>
+                                    
+                                    <div>
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Account Type</label>
+                                        <div style="font-weight: 500;">Tenant</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <div class="section-title">Security</div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                                <div>
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Password</label>
+                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                        <div style="font-weight: 500;">••••••••</div>
+                                        <button class="task-action-btn btn-start">Change Password</button>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Two-Factor Authentication</label>
+                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                        <div style="font-weight: 500;">Not Enabled</div>
+                                        <button class="task-action-btn btn-start">Enable</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Re-add sidebar toggle functionality
+                    document.getElementById('sidebarToggle').addEventListener('click', function() {
+                        document.getElementById('sidebar').classList.toggle('expanded');
+                        document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            }
+            
+            if (settingsLink) {
+                settingsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Clear any active menu items
+                    document.querySelectorAll('.menu-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Set this menu item as active
+                    e.currentTarget.classList.add('active');
+                    
+                    // Replace main content with settings page
+                    mainContent.innerHTML = `
+                        <div class="dashboard-header">
+                            <div class="page-title">
+                                <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
+                                Settings
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <div class="section-title">Account Preferences</div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                                <div>
+                                    <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 10px;">Language</label>
+                                    <select style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                        <option value="en">English</option>
+                                        <option value="hi">Hindi</option>
+                                        <option value="bn">Bengali</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 10px;">Time Zone</label>
+                                    <select style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                        <option value="IST">Indian Standard Time (IST)</option>
+                                        <option value="UTC">Coordinated Universal Time (UTC)</option>
+                                        <option value="EST">Eastern Standard Time (EST)</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 10px;">Currency</label>
+                                    <select style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                        <option value="INR">Indian Rupee (₹)</option>
+                                        <option value="USD">US Dollar ($)</option>
+                                        <option value="EUR">Euro (€)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <div class="section-title">Notifications</div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--gray-light);">
+                                    <div>
+                                        <div style="font-weight: 500; margin-bottom: 5px;">Email Notifications</div>
+                                        <div style="font-size: 14px; color: var(--gray);">Receive updates and alerts via email</div>
+                                    </div>
+                                    <label class="switch" style="position: relative; display: inline-block; width: 50px; height: 24px;">
+                                        <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--primary); border-radius: 34px; transition: .4s;"></span>
+                                    </label>
+                                </div>
+                                
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--gray-light);">
+                                    <div>
+                                        <div style="font-weight: 500; margin-bottom: 5px;">SMS Notifications</div>
+                                        <div style="font-size: 14px; color: var(--gray);">Receive updates and alerts via SMS</div>
+                                    </div>
+                                    <label class="switch" style="position: relative; display: inline-block; width: 50px; height: 24px;">
+                                        <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
+                                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--gray-light); border-radius: 34px; transition: .4s;"></span>
+                                    </label>
+                                </div>
+                                
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <div style="font-weight: 500; margin-bottom: 5px;">Push Notifications</div>
+                                        <div style="font-size: 14px; color: var(--gray);">Receive updates and alerts via push notifications</div>
+                                    </div>
+                                    <label class="switch" style="position: relative; display: inline-block; width: 50px; height: 24px;">
+                                        <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--primary); border-radius: 34px; transition: .4s;"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                            <button class="task-action-btn btn-start" style="padding: 10px 20px;">Save Changes</button>
+                        </div>
+                    `;
+                    
+                    // Re-add sidebar toggle functionality
+                    document.getElementById('sidebarToggle').addEventListener('click', function() {
+                        document.getElementById('sidebar').classList.toggle('expanded');
+                        document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            }
+        } else {
+            // Redirect to login if not logged in
+            window.location.href = '../../login-signup/public/login.html';
+        }
+    });
+</script>
+<script>
+    // Add a dashboard link functionality to show the dashboard when clicked
+    // Find the dashboard menu item and add an event listener
+    // Add this after the existing event listeners for menu items
+
+    // Add this inside the DOMContentLoaded event listener, before the closing });
+    // Add dashboard link functionality
+    const dashboardLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item');
+    if (dashboardLink) {
+        dashboardLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Clear any active menu items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Set this menu item as active
+            e.currentTarget.classList.add('active');
+            
+            // Reload the page to show the dashboard
+            window.location.href = 'tenant-dashboard.html';
+        });
+    }
+
+    // Modify the profile section to allow editing personal information
+    // Replace the existing profile section with an editable version
+    // Find the profileLink event listener and modify the content it generates
+
+    // Modify the profile page content in the profileLink event listener
+    // Replace the existing profile page HTML with this updated version that includes edit functionality
+    if (profileLink) {
+        profileLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Clear any active menu items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Set this menu item as active
+            e.currentTarget.classList.add('active');
+            
+            // Replace main content with profile page
+            mainContent.innerHTML = `
+                <div class="dashboard-header">
+                    <div class="page-title">
+                        <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
+                        Profile
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-title">Personal Information</div>
+                        <a href="#" class="section-action" id="editProfileBtn">Edit</a>
+                    </div>
+                    
+                    <div id="profileViewMode" style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start;">
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; background-color: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 20px auto;">
+                                ${user.firstName.charAt(0)}${user.lastName.charAt(0)}
+                            </div>
+                            <button class="request-action-btn btn-assign" style="margin-top: 10px;">Upload Photo</button>
+                        </div>
+                        
+                        <div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                <div>
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">First Name</label>
+                                    <div style="font-weight: 500;">${user.firstName || 'Not provided'}</div>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Last Name</label>
+                                    <div style="font-weight: 500;">${user.lastName || 'Not provided'}</div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Email Address</label>
+                                <div style="font-weight: 500;">${user.email || 'Not provided'}</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Phone Number</label>
+                                <div style="font-weight: 500;">${user.phone || 'Not provided'}</div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Account Type</label>
+                                <div style="font-weight: 500;">Tenant</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="profileEditMode" style="display: none; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start;">
+                        <div style="text-align: center;">
+                            <div style="width: 150px; height: 150px; background-color: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 20px auto;">
+                                ${user.firstName.charAt(0)}${user.lastName.charAt(0)}
+                            </div>
+                            <button class="request-action-btn btn-assign" style="margin-top: 10px;">Upload Photo</button>
+                        </div>
+                        
+                        <div>
+                            <form id="profileEditForm">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                    <div>
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">First Name</label>
+                                        <input type="text" id="editFirstName" value="${user.firstName || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Last Name</label>
+                                        <input type="text" id="editLastName" value="${user.lastName || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Email Address</label>
+                                    <input type="email" id="editEmail" value="${user.email || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);" readonly>
+                                    <small style="color: var(--gray); font-size: 11px;">Email cannot be changed for security reasons</small>
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Phone Number</label>
+                                    <input type="tel" id="editPhone" value="${user.phone || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                </div>
+                                
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Address</label>
+                                    <input type="text" id="editAddress" value="${user.address || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                    <div>
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">City</label>
+                                        <input type="text" id="editCity" value="${user.city || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">PIN Code</label>
+                                        <input type="text" id="editPincode" value="${user.pincode || ''}" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);">
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                    <button type="button" id="cancelEditBtn" class="request-action-btn" style="background-color: var(--gray-light); color: var(--dark); border: none;">Cancel</button>
+                                    <button type="submit" class="request-action-btn btn-assign">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-title">Security</div>
+                    </div>
+                    
+                    <div id="passwordViewMode">
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                            <div>
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Password</label>
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="font-weight: 500;">••••••••</div>
+                                    <button id="changePasswordBtn" class="request-action-btn btn-assign">Change Password</button>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Two-Factor Authentication</label>
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="font-weight: 500;">Not Enabled</div>
+                                    <button class="request-action-btn btn-assign">Enable</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="passwordEditMode" style="display: none;">
+                        <form id="passwordChangeForm">
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Current Password</label>
+                                <input type="password" id="currentPassword" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);" required>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">New Password</label>
+                                <input type="password" id="newPassword" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);" required>
+                                <small style="color: var(--gray); font-size: 11px;">Password must be at least 8 characters long</small>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 12px; color: var(--gray); margin-bottom: 5px;">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--gray-light);" required>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                <button type="button" id="cancelPasswordBtn" class="request-action-btn" style="background-color: var(--gray-light); color: var(--dark); border: none;">Cancel</button>
+                                <button type="submit" class="request-action-btn btn-assign">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            // Re-add sidebar toggle functionality
+            document.getElementById('sidebarToggle').addEventListener('click', function() {
+                document.getElementById('sidebar').classList.toggle('expanded');
+                document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+            });
+            
+            // Add functionality to toggle between view and edit modes for profile
+            const editProfileBtn = document.getElementById('editProfileBtn');
+            const profileViewMode = document.getElementById('profileViewMode');
+            const profileEditMode = document.getElementById('profileEditMode');
+            const cancelEditBtn = document.getElementById('cancelEditBtn');
+            
+            if (editProfileBtn) {
+                editProfileBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    profileViewMode.style.display = 'none';
+                    profileEditMode.style.display = 'grid';
+                });
+            }
+            
+            if (cancelEditBtn) {
+                cancelEditBtn.addEventListener('click', function() {
+                    profileViewMode.style.display = 'grid';
+                    profileEditMode.style.display = 'none';
+                });
+            }
+            
+            // Add functionality for profile edit form submission
+            const profileEditForm = document.getElementById('profileEditForm');
+            if (profileEditForm) {
+                profileEditForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const updatedUserData = {
+                        firstName: document.getElementById('editFirstName').value,
+                        lastName: document.getElementById('editLastName').value,
+                        phone: document.getElementById('editPhone').value,
+                        address: document.getElementById('editAddress').value,
+                        city: document.getElementById('editCity').value,
+                        pincode: document.getElementById('editPincode').value
+                    };
+                    
+                    try {
+                        const response = await fetch('http://localhost:3000/api/profile', {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            body: JSON.stringify(updatedUserData)
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            // Update the user data in localStorage
+                            const currentUser = JSON.parse(localStorage.getItem('user'));
+                            const updatedUser = { ...currentUser, ...updatedUserData };
+                            localStorage.setItem('user', JSON.stringify(updatedUser));
+                            
+                            alert('Profile updated successfully!');
+                            
+                            // Switch back to view mode with updated information
+                            profileViewMode.style.display = 'grid';
+                            profileEditMode.style.display = 'none';
+                            
+                            // Reload the page to reflect changes
+                            window.location.reload();
+                        } else {
+                            alert(data.message || 'Failed to update profile. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error updating profile:', error);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+            
+            // Add functionality to toggle between view and edit modes for password
+            const changePasswordBtn = document.getElementById('changePasswordBtn');
+            const passwordViewMode = document.getElementById('passwordViewMode');
+            const passwordEditMode = document.getElementById('passwordEditMode');
+            const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
+            
+            if (changePasswordBtn) {
+                changePasswordBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    passwordViewMode.style.display = 'none';
+                    passwordEditMode.style.display = 'block';
+                });
+            }
+            
+            if (cancelPasswordBtn) {
+                cancelPasswordBtn.addEventListener('click', function() {
+                    passwordViewMode.style.display = 'block';
+                    passwordEditMode.style.display = 'none';
+                });
+            }
+            
+            // Add functionality for password change form submission
+            const passwordChangeForm = document.getElementById('passwordChangeForm');
+            if (passwordChangeForm) {
+                passwordChangeForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const currentPassword = document.getElementById('currentPassword').value;
+                    const newPassword = document.getElementById('newPassword').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    
+                    if (newPassword !== confirmPassword) {
+                        alert('New passwords do not match!');
+                        return;
+                    }
+                    
+                    if (newPassword.length < 8) {
+                        alert('Password must be at least 8 characters long!');
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('http://localhost:3000/api/change-password', {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                            },
+                            body: JSON.stringify({
+                                currentPassword,
+                                newPassword
+                            })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            alert('Password changed successfully!');
+                            
+                            // Switch back to view mode
+                            passwordViewMode.style.display = 'block';
+                            passwordEditMode.style.display = 'none';
+                            
+                            // Clear the form
+                            passwordChangeForm.reset();
+                        } else {
+                            alert(data.message || 'Failed to change password. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error changing password:', error);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    }
+</script>
