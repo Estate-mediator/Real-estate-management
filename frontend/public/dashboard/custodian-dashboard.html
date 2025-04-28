@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custodian Dashboard | Dream Estate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -20,25 +23,25 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
             background-color: #f8fafc;
             line-height: 1.6;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         button {
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
@@ -83,7 +86,8 @@
 
         .sidebar-menu {
             padding: 20px 0;
-            padding-bottom: 80px; /* Add space at the bottom to prevent overlap with user profile */
+            padding-bottom: 80px;
+            /* Add space at the bottom to prevent overlap with user profile */
             overflow-y: auto;
         }
 
@@ -103,7 +107,8 @@
             transition: all 0.3s;
         }
 
-        .menu-item:hover, .menu-item.active {
+        .menu-item:hover,
+        .menu-item.active {
             background-color: rgba(59, 130, 246, 0.1);
             color: var(--primary);
         }
@@ -119,11 +124,12 @@
             border-top: 1px solid var(--gray-light);
             display: flex;
             align-items: center;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+            /* position: absolute; */
+            /* bottom: 0; */
+            /* width: 100%; */
+            margin-top: -4rem;
             background-color: var(--white);
-            z-index: 10;
+            /* z-index: 10; */
         }
 
         .user-avatar {
@@ -853,19 +859,20 @@
             border-radius: 50%;
         }
 
-        input:checked + span {
+        input:checked+span {
             background-color: var(--primary);
         }
 
-        input:focus + span {
+        input:focus+span {
             box-shadow: 0 0 1px var(--primary);
         }
 
-        input:checked + span:before {
+        input:checked+span:before {
             transform: translateX(26px);
         }
     </style>
 </head>
+
 <body>
     <div class="dashboard-container">
         <!-- Sidebar -->
@@ -876,7 +883,7 @@
                     <span><a href="../../index.html">Dream Estate</a></span>
                 </div>
             </div>
-            
+
             <div class="sidebar-menu">
                 <div class="menu-category">Main</div>
                 <a href="#" class="menu-item active">
@@ -891,7 +898,7 @@
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
                 </a>
-                
+
                 <div class="menu-category">Management</div>
                 <a href="#" class="menu-item">
                     <i class="fas fa-building"></i>
@@ -909,7 +916,7 @@
                     <i class="fas fa-file-alt"></i>
                     <span>Reports</span>
                 </a>
-                
+
                 <div class="menu-category">Account</div>
                 <a href="#" class="menu-item">
                     <i class="fas fa-user"></i>
@@ -924,19 +931,19 @@
                     <span>Help & Support</span>
                 </a>
             </div>
-            
+
             <div class="user-profile">
-    <div class="user-avatar" id="userInitials">RK</div>
-    <div class="user-info">
-        <div class="user-name" id="userName">Rajesh Kumar</div>
-        <div class="user-role">Custodian</div>
-    </div>
-    <div class="logout-btn" id="logoutButton">
-        <i class="fas fa-sign-out-alt"></i>
-    </div>
-</div>
+                <div class="user-avatar" id="userInitials">RK</div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Rajesh Kumar</div>
+                    <div class="user-role">Custodian</div>
+                </div>
+                <div class="logout-btn" id="logoutButton">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+            </div>
         </div>
-        
+
         <!-- Main Content -->
         <div class="main-content" id="mainContent">
             <div class="dashboard-header">
@@ -944,20 +951,20 @@
                     <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
                     Custodian Dashboard
                 </div>
-                
+
                 <div class="header-actions">
                     <div class="search-bar">
                         <i class="fas fa-search"></i>
                         <input type="text" placeholder="Search...">
                     </div>
-                    
+
                     <div class="notification-bell">
                         <i class="fas fa-bell"></i>
                         <div class="notification-badge">7</div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Dashboard Cards -->
             <div class="dashboard-cards">
                 <div class="card">
@@ -970,7 +977,7 @@
                     <div class="card-value">8</div>
                     <div class="card-description">3 high priority</div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Properties Assigned</div>
@@ -981,7 +988,7 @@
                     <div class="card-value">5</div>
                     <div class="card-description">2 with active issues</div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Tasks Completed</div>
@@ -992,7 +999,7 @@
                     <div class="card-value">42</div>
                     <div class="card-description">This month</div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Response Time</div>
@@ -1004,14 +1011,14 @@
                     <div class="card-description">Average response time</div>
                 </div>
             </div>
-            
+
             <!-- Pending Tasks -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-title">Pending Tasks</div>
                     <a href="#" class="section-action">View All</a>
                 </div>
-                
+
                 <div class="task-list">
                     <div class="task-item">
                         <div class="task-icon">
@@ -1029,7 +1036,7 @@
                         </div>
                         <div class="task-status status-open">High Priority</div>
                     </div>
-                    
+
                     <div class="task-item">
                         <div class="task-icon">
                             <i class="fas fa-lightbulb"></i>
@@ -1046,7 +1053,7 @@
                         </div>
                         <div class="task-status status-open">Medium Priority</div>
                     </div>
-                    
+
                     <div class="task-item">
                         <div class="task-icon">
                             <i class="fas fa-temperature-low"></i>
@@ -1065,14 +1072,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- In Progress Tasks -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-title">In Progress Tasks</div>
                     <a href="#" class="section-action">View All</a>
                 </div>
-                
+
                 <div class="task-list">
                     <div class="task-item">
                         <div class="task-icon">
@@ -1090,7 +1097,7 @@
                         </div>
                         <div class="task-status status-in-progress">In Progress</div>
                     </div>
-                    
+
                     <div class="task-item">
                         <div class="task-icon">
                             <i class="fas fa-door-open"></i>
@@ -1108,7 +1115,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Assigned Properties and Schedule -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                 <!-- Assigned Properties -->
@@ -1117,19 +1124,20 @@
                         <div class="section-title">Assigned Properties</div>
                         <a href="#" class="section-action">View All</a>
                     </div>
-                    
+
                     <div class="property-list">
                         <div class="property-card">
                             <div class="property-image">
-                                <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg" alt="Modern Apartment">
+                                <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
+                                    alt="Modern Apartment">
                             </div>
-                            
+
                             <div class="property-content">
                                 <h3 class="property-title">Modern Apartment in Ballygunge</h3>
                                 <p class="property-address">
                                     <i class="fas fa-map-marker-alt"></i> Ballygunge, Kolkata
                                 </p>
-                                
+
                                 <div class="property-details">
                                     <div class="property-detail">
                                         <i class="fas fa-tasks"></i> 3 Tasks
@@ -1139,25 +1147,26 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="property-status">
                                 <div class="status-indicator">
                                     <i class="fas fa-check-circle"></i> Last Visit: Apr 15
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="property-card">
                             <div class="property-image">
-                                <img src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg" alt="Luxury Villa">
+                                <img src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg"
+                                    alt="Luxury Villa">
                             </div>
-                            
+
                             <div class="property-content">
                                 <h3 class="property-title">Luxury Villa in Salt Lake City</h3>
                                 <p class="property-address">
                                     <i class="fas fa-map-marker-alt"></i> Salt Lake City, Kolkata
                                 </p>
-                                
+
                                 <div class="property-details">
                                     <div class="property-detail">
                                         <i class="fas fa-tasks"></i> 1 Task
@@ -1167,7 +1176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="property-status">
                                 <div class="status-indicator">
                                     <i class="fas fa-check-circle"></i> Last Visit: Apr 19
@@ -1176,14 +1185,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Weekly Schedule -->
                 <div class="section">
                     <div class="section-header">
                         <div class="section-title">Weekly Schedule</div>
                         <a href="#" class="section-action">View Full Calendar</a>
                     </div>
-                    
+
                     <div class="calendar-container">
                         <div class="calendar-header">
                             <div class="calendar-title">April 2025</div>
@@ -1196,7 +1205,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="calendar-grid">
                             <div class="calendar-day-header">Sun</div>
                             <div class="calendar-day-header">Mon</div>
@@ -1205,7 +1214,7 @@
                             <div class="calendar-day-header">Thu</div>
                             <div class="calendar-day-header">Fri</div>
                             <div class="calendar-day-header">Sat</div>
-                            
+
                             <!-- Calendar days -->
                             <div class="calendar-day">
                                 <div class="calendar-day-number">18</div>
@@ -1234,7 +1243,7 @@
                                 <div class="calendar-day-number">24</div>
                             </div>
                         </div>
-                        
+
                         <div style="margin-top: 20px;">
                             <h4 style="font-size: 16px; margin-bottom: 10px;">Today's Schedule</h4>
                             <div class="task-list">
@@ -1248,7 +1257,7 @@
                                         <div class="task-date">10:00 AM - 11:30 AM</div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="task-item">
                                     <div class="task-icon">
                                         <i class="fas fa-clock"></i>
@@ -1259,7 +1268,7 @@
                                         <div class="task-date">1:00 PM - 4:00 PM</div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="task-item">
                                     <div class="task-icon">
                                         <i class="fas fa-clock"></i>
@@ -1275,14 +1284,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Inventory Status -->
             <div class="section">
                 <div class="section-header">
                     <div class="section-title">Inventory Status</div>
                     <a href="#" class="section-action">Request Supplies</a>
                 </div>
-                
+
                 <div class="inventory-list">
                     <div class="inventory-item">
                         <div class="inventory-name">Paint (White)</div>
@@ -1291,7 +1300,7 @@
                             <span class="inventory-status status-in-stock">In Stock</span>
                         </div>
                     </div>
-                    
+
                     <div class="inventory-item">
                         <div class="inventory-name">Light Fixtures</div>
                         <div class="inventory-quantity">
@@ -1299,7 +1308,7 @@
                             <span class="inventory-status status-in-stock">In Stock</span>
                         </div>
                     </div>
-                    
+
                     <div class="inventory-item">
                         <div class="inventory-name">Plumbing Supplies</div>
                         <div class="inventory-quantity">
@@ -1307,7 +1316,7 @@
                             <span class="inventory-status status-low-stock">Low Stock</span>
                         </div>
                     </div>
-                    
+
                     <div class="inventory-item">
                         <div class="inventory-name">Door Hinges</div>
                         <div class="inventory-quantity">
@@ -1315,7 +1324,7 @@
                             <span class="inventory-status status-low-stock">Low Stock</span>
                         </div>
                     </div>
-                    
+
                     <div class="inventory-item">
                         <div class="inventory-name">AC Filters</div>
                         <div class="inventory-quantity">
@@ -1330,79 +1339,79 @@
 
     <script>
         // Toggle sidebar on mobile
-        document.getElementById('sidebarToggle').addEventListener('click', function() {
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
             document.getElementById('sidebar').classList.toggle('expanded');
             document.getElementById('mainContent').classList.toggle('sidebar-expanded');
         });
     </script>
-<script>
-    // Get user data from localStorage
-    document.addEventListener('DOMContentLoaded', function() {
-        const user = JSON.parse(localStorage.getItem('user') || 'null');
-        
-        if (user) {
-            // Update user name in sidebar
-            const userName = document.getElementById('userName');
-            const userInitials = document.getElementById('userInitials');
-            
-            if (userName && user.firstName && user.lastName) {
-                userName.textContent = `${user.firstName} ${user.lastName}`;
-                userInitials.textContent = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
-            }
-            
-            // Add logout functionality
-            const logoutButton = document.getElementById('logoutButton');
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    localStorage.removeItem('user');
-                    window.location.href = '../../index.html';
-                });
-            }
+    <script>
+        // Get user data from localStorage
+        document.addEventListener('DOMContentLoaded', function () {
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
 
-            // Create content container for dynamic content
-            const mainContent = document.getElementById('mainContent');
-            
-            // Add dashboard link functionality
-            const dashboardLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item');
-            if (dashboardLink) {
-                dashboardLink.addEventListener('click', function(e) {
+            if (user) {
+                // Update user name in sidebar
+                const userName = document.getElementById('userName');
+                const userInitials = document.getElementById('userInitials');
+
+                if (userName && user.firstName && user.lastName) {
+                    userName.textContent = `${user.firstName} ${user.lastName}`;
+                    userInitials.textContent = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
+                }
+
+                // Add logout functionality
+                const logoutButton = document.getElementById('logoutButton');
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', function () {
+                        localStorage.removeItem('user');
+                        window.location.href = '../../index.html';
+                    });
+                }
+
+                // Create content container for dynamic content
+                const mainContent = document.getElementById('mainContent');
+
+                // Add dashboard link functionality
+                const dashboardLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item');
+                if (dashboardLink) {
+                    dashboardLink.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        // Clear any active menu items
+                        document.querySelectorAll('.menu-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+
+                        // Set this menu item as active
+                        e.currentTarget.classList.add('active');
+
+                        // Reload the page to show the dashboard
+                        window.location.reload();
+                    });
+                }
+
+                // Add "Coming Soon" functionality for main and management sections
+                const myTasksLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item + .menu-item');
+                const scheduleLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item + .menu-item + .menu-item');
+                const propertiesLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item');
+                const maintenanceLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item');
+                const inventoryLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item + .menu-item');
+                const reportsLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item + .menu-item + .menu-item');
+
+                // Function to show coming soon message with proper formatting
+                function showComingSoon(e, sectionName) {
                     e.preventDefault();
-                    
+
                     // Clear any active menu items
                     document.querySelectorAll('.menu-item').forEach(item => {
                         item.classList.remove('active');
                     });
-                    
+
                     // Set this menu item as active
                     e.currentTarget.classList.add('active');
-                    
-                    // Reload the page to show the dashboard
-                    window.location.reload();
-                });
-            }
-            
-            // Add "Coming Soon" functionality for main and management sections
-            const myTasksLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item + .menu-item');
-            const scheduleLink = document.querySelector('.menu-category:nth-of-type(1) + .menu-item + .menu-item + .menu-item');
-            const propertiesLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item');
-            const maintenanceLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item');
-            const inventoryLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item + .menu-item');
-            const reportsLink = document.querySelector('.menu-category:nth-of-type(2) + .menu-item + .menu-item + .menu-item + .menu-item');
-            
-            // Function to show coming soon message with proper formatting
-            function showComingSoon(e, sectionName) {
-                e.preventDefault();
-                
-                // Clear any active menu items
-                document.querySelectorAll('.menu-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Set this menu item as active
-                e.currentTarget.classList.add('active');
-                
-                // Replace main content with coming soon message
-                mainContent.innerHTML = `
+
+                    // Replace main content with coming soon message
+                    mainContent.innerHTML = `
                     <div class="dashboard-header">
                         <div class="page-title">
                             <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
@@ -1422,60 +1431,60 @@
                         </p>
                     </div>
                 `;
-                
-                // Re-add sidebar toggle functionality
-                document.getElementById('sidebarToggle').addEventListener('click', function() {
-                    document.getElementById('sidebar').classList.toggle('expanded');
-                    document.getElementById('mainContent').classList.toggle('sidebar-expanded');
-                });
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-            }
-            
-            // Add event listeners to main and management menu items
-            if (myTasksLink) {
-                myTasksLink.addEventListener('click', (e) => showComingSoon(e, 'My Tasks'));
-            }
-            
-            if (scheduleLink) {
-                scheduleLink.addEventListener('click', (e) => showComingSoon(e, 'Schedule'));
-            }
-            
-            if (propertiesLink) {
-                propertiesLink.addEventListener('click', (e) => showComingSoon(e, 'Properties'));
-            }
-            
-            if (maintenanceLink) {
-                maintenanceLink.addEventListener('click', (e) => showComingSoon(e, 'Maintenance'));
-            }
-            
-            if (inventoryLink) {
-                inventoryLink.addEventListener('click', (e) => showComingSoon(e, 'Inventory'));
-            }
-            
-            if (reportsLink) {
-                reportsLink.addEventListener('click', (e) => showComingSoon(e, 'Reports'));
-            }
-            
-            // Make account section work properly
-            const profileLink = document.querySelector('.menu-category:nth-of-type(3) + .menu-item');
-            const settingsLink = document.querySelector('.menu-category:nth-of-type(3) + .menu-item + .menu-item');
-            
-            if (profileLink) {
-                profileLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Clear any active menu items
-                    document.querySelectorAll('.menu-item').forEach(item => {
-                        item.classList.remove('active');
+
+                    // Re-add sidebar toggle functionality
+                    document.getElementById('sidebarToggle').addEventListener('click', function () {
+                        document.getElementById('sidebar').classList.toggle('expanded');
+                        document.getElementById('mainContent').classList.toggle('sidebar-expanded');
                     });
-                    
-                    // Set this menu item as active
-                    e.currentTarget.classList.add('active');
-                    
-                    // Replace main content with profile page
-                    mainContent.innerHTML = `
+
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }
+
+                // Add event listeners to main and management menu items
+                if (myTasksLink) {
+                    myTasksLink.addEventListener('click', (e) => showComingSoon(e, 'My Tasks'));
+                }
+
+                if (scheduleLink) {
+                    scheduleLink.addEventListener('click', (e) => showComingSoon(e, 'Schedule'));
+                }
+
+                if (propertiesLink) {
+                    propertiesLink.addEventListener('click', (e) => showComingSoon(e, 'Properties'));
+                }
+
+                if (maintenanceLink) {
+                    maintenanceLink.addEventListener('click', (e) => showComingSoon(e, 'Maintenance'));
+                }
+
+                if (inventoryLink) {
+                    inventoryLink.addEventListener('click', (e) => showComingSoon(e, 'Inventory'));
+                }
+
+                if (reportsLink) {
+                    reportsLink.addEventListener('click', (e) => showComingSoon(e, 'Reports'));
+                }
+
+                // Make account section work properly
+                const profileLink = document.querySelector('.menu-category:nth-of-type(3) + .menu-item');
+                const settingsLink = document.querySelector('.menu-category:nth-of-type(3) + .menu-item + .menu-item');
+
+                if (profileLink) {
+                    profileLink.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        // Clear any active menu items
+                        document.querySelectorAll('.menu-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+
+                        // Set this menu item as active
+                        e.currentTarget.classList.add('active');
+
+                        // Replace main content with profile page
+                        mainContent.innerHTML = `
                         <div class="dashboard-header">
                             <div class="page-title">
                                 <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
@@ -1645,130 +1654,130 @@
                             </div>
                         </div>
                     `;
-                    
-                    // Re-add sidebar toggle functionality
-                    document.getElementById('sidebarToggle').addEventListener('click', function() {
-                        document.getElementById('sidebar').classList.toggle('expanded');
-                        document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+
+                        // Re-add sidebar toggle functionality
+                        document.getElementById('sidebarToggle').addEventListener('click', function () {
+                            document.getElementById('sidebar').classList.toggle('expanded');
+                            document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+                        });
+
+                        // Add functionality to toggle between view and edit modes for profile
+                        const editProfileBtn = document.getElementById('editProfileBtn');
+                        const profileViewMode = document.getElementById('profileViewMode');
+                        const profileEditMode = document.getElementById('profileEditMode');
+                        const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+                        if (editProfileBtn) {
+                            editProfileBtn.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                profileViewMode.style.display = 'none';
+                                profileEditMode.style.display = 'grid';
+                            });
+                        }
+
+                        if (cancelEditBtn) {
+                            cancelEditBtn.addEventListener('click', function () {
+                                profileViewMode.style.display = 'grid';
+                                profileEditMode.style.display = 'none';
+                            });
+                        }
+
+                        // Add functionality for profile edit form submission
+                        const profileEditForm = document.getElementById('profileEditForm');
+                        if (profileEditForm) {
+                            profileEditForm.addEventListener('submit', function (e) {
+                                e.preventDefault();
+
+                                // Get updated user data
+                                const updatedUserData = {
+                                    firstName: document.getElementById('editFirstName').value,
+                                    lastName: document.getElementById('editLastName').value,
+                                    phone: document.getElementById('editPhone').value,
+                                    address: document.getElementById('editAddress').value
+                                };
+
+                                // Update user data in localStorage
+                                const currentUser = JSON.parse(localStorage.getItem('user'));
+                                const updatedUser = { ...currentUser, ...updatedUserData };
+                                localStorage.setItem('user', JSON.stringify(updatedUser));
+
+                                alert('Profile updated successfully!');
+
+                                // Reload the page to reflect changes
+                                window.location.reload();
+                            });
+                        }
+
+                        // Add functionality to toggle between view and edit modes for password
+                        const changePasswordBtn = document.getElementById('changePasswordBtn');
+                        const passwordViewMode = document.getElementById('passwordViewMode');
+                        const passwordEditMode = document.getElementById('passwordEditMode');
+                        const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
+
+                        if (changePasswordBtn) {
+                            changePasswordBtn.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                passwordViewMode.style.display = 'none';
+                                passwordEditMode.style.display = 'block';
+                            });
+                        }
+
+                        if (cancelPasswordBtn) {
+                            cancelPasswordBtn.addEventListener('click', function () {
+                                passwordViewMode.style.display = 'block';
+                                passwordEditMode.style.display = 'none';
+                            });
+                        }
+
+                        // Add functionality for password change form submission
+                        const passwordChangeForm = document.getElementById('passwordChangeForm');
+                        if (passwordChangeForm) {
+                            passwordChangeForm.addEventListener('submit', function (e) {
+                                e.preventDefault();
+
+                                const newPassword = document.getElementById('newPassword').value;
+                                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                                if (newPassword !== confirmPassword) {
+                                    alert('New passwords do not match!');
+                                    return;
+                                }
+
+                                if (newPassword.length < 8) {
+                                    alert('Password must be at least 8 characters long!');
+                                    return;
+                                }
+
+                                alert('Password changed successfully!');
+
+                                // Switch back to view mode
+                                passwordViewMode.style.display = 'block';
+                                passwordEditMode.style.display = 'none';
+
+                                // Clear the form
+                                passwordChangeForm.reset();
+                            });
+                        }
+
+                        // Scroll to top
+                        window.scrollTo(0, 0);
                     });
-                    
-                    // Add functionality to toggle between view and edit modes for profile
-                    const editProfileBtn = document.getElementById('editProfileBtn');
-                    const profileViewMode = document.getElementById('profileViewMode');
-                    const profileEditMode = document.getElementById('profileEditMode');
-                    const cancelEditBtn = document.getElementById('cancelEditBtn');
-                    
-                    if (editProfileBtn) {
-                        editProfileBtn.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            profileViewMode.style.display = 'none';
-                            profileEditMode.style.display = 'grid';
+                }
+
+                if (settingsLink) {
+                    settingsLink.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        // Clear any active menu items
+                        document.querySelectorAll('.menu-item').forEach(item => {
+                            item.classList.remove('active');
                         });
-                    }
-                    
-                    if (cancelEditBtn) {
-                        cancelEditBtn.addEventListener('click', function() {
-                            profileViewMode.style.display = 'grid';
-                            profileEditMode.style.display = 'none';
-                        });
-                    }
-                    
-                    // Add functionality for profile edit form submission
-                    const profileEditForm = document.getElementById('profileEditForm');
-                    if (profileEditForm) {
-                        profileEditForm.addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            
-                            // Get updated user data
-                            const updatedUserData = {
-                                firstName: document.getElementById('editFirstName').value,
-                                lastName: document.getElementById('editLastName').value,
-                                phone: document.getElementById('editPhone').value,
-                                address: document.getElementById('editAddress').value
-                            };
-                            
-                            // Update user data in localStorage
-                            const currentUser = JSON.parse(localStorage.getItem('user'));
-                            const updatedUser = { ...currentUser, ...updatedUserData };
-                            localStorage.setItem('user', JSON.stringify(updatedUser));
-                            
-                            alert('Profile updated successfully!');
-                            
-                            // Reload the page to reflect changes
-                            window.location.reload();
-                        });
-                    }
-                    
-                    // Add functionality to toggle between view and edit modes for password
-                    const changePasswordBtn = document.getElementById('changePasswordBtn');
-                    const passwordViewMode = document.getElementById('passwordViewMode');
-                    const passwordEditMode = document.getElementById('passwordEditMode');
-                    const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
-                    
-                    if (changePasswordBtn) {
-                        changePasswordBtn.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            passwordViewMode.style.display = 'none';
-                            passwordEditMode.style.display = 'block';
-                        });
-                    }
-                    
-                    if (cancelPasswordBtn) {
-                        cancelPasswordBtn.addEventListener('click', function() {
-                            passwordViewMode.style.display = 'block';
-                            passwordEditMode.style.display = 'none';
-                        });
-                    }
-                    
-                    // Add functionality for password change form submission
-                    const passwordChangeForm = document.getElementById('passwordChangeForm');
-                    if (passwordChangeForm) {
-                        passwordChangeForm.addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            
-                            const newPassword = document.getElementById('newPassword').value;
-                            const confirmPassword = document.getElementById('confirmPassword').value;
-                            
-                            if (newPassword !== confirmPassword) {
-                                alert('New passwords do not match!');
-                                return;
-                            }
-                            
-                            if (newPassword.length < 8) {
-                                alert('Password must be at least 8 characters long!');
-                                return;
-                            }
-                            
-                            alert('Password changed successfully!');
-                            
-                            // Switch back to view mode
-                            passwordViewMode.style.display = 'block';
-                            passwordEditMode.style.display = 'none';
-                            
-                            // Clear the form
-                            passwordChangeForm.reset();
-                        });
-                    }
-                    
-                    // Scroll to top
-                    window.scrollTo(0, 0);
-                });
-            }
-            
-            if (settingsLink) {
-                settingsLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Clear any active menu items
-                    document.querySelectorAll('.menu-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    
-                    // Set this menu item as active
-                    e.currentTarget.classList.add('active');
-                    
-                    // Replace main content with settings page
-                    mainContent.innerHTML = `
+
+                        // Set this menu item as active
+                        e.currentTarget.classList.add('active');
+
+                        // Replace main content with settings page
+                        mainContent.innerHTML = `
                         <div class="dashboard-header">
                             <div class="page-title">
                                 <i class="mobile-toggle fas fa-bars" id="sidebarToggle"></i>
@@ -1877,27 +1886,27 @@
                             <button class="task-action-btn btn-start" style="padding: 10px 20px;">Save Changes</button>
                         </div>
                     `;
-                    
-                    // Re-add sidebar toggle functionality
-                    document.getElementById('sidebarToggle').addEventListener('click', function() {
-                        document.getElementById('sidebar').classList.toggle('expanded');
-                        document.getElementById('mainContent').classList.toggle('sidebar-expanded');
-                    });
-                    
-                    // Scroll to top
-                    window.scrollTo(0, 0);
-                });
-            }
-        } else {
-            // Redirect to login if not logged in
-            window.location.href = '../../login-signup/public/login.html';
-        }
-    });
 
-    // Toggle sidebar on mobile
-    document.getElementById('sidebarToggle').addEventListener('click', function() {
-        document.getElementById('sidebar').classList.toggle('expanded');
-        document.getElementById('mainContent').classList.toggle('sidebar-expanded');
-    });
-</script>
+                        // Re-add sidebar toggle functionality
+                        document.getElementById('sidebarToggle').addEventListener('click', function () {
+                            document.getElementById('sidebar').classList.toggle('expanded');
+                            document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+                        });
+
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    });
+                }
+            } else {
+                // Redirect to login if not logged in
+                window.location.href = '../../login-signup/public/login.html';
+            }
+        });
+
+        // Toggle sidebar on mobile
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('mainContent').classList.toggle('sidebar-expanded');
+        });
+    </script>
 </body
