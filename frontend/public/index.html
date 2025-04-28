@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dream Estate - Find Your Perfect Home in Kolkata</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -20,36 +23,36 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
             background-color: #f8fafc;
             line-height: 1.6;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         button {
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
             background-color: var(--white);
             box-shadow: var(--shadow);
@@ -57,14 +60,14 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 16px 0;
         }
-        
+
         .logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -73,31 +76,31 @@
             display: flex;
             align-items: center;
         }
-        
+
         .logo i {
             margin-right: 8px;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 24px;
         }
-        
+
         nav ul li a {
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+
         nav ul li a:hover {
             color: var(--primary);
         }
-        
+
         .auth-buttons {
             display: flex;
             gap: 12px;
         }
-        
+
         .btn {
             padding: 10px 16px;
             border-radius: 8px;
@@ -105,27 +108,27 @@
             border: none;
             transition: all 0.3s;
         }
-        
+
         .btn-outline {
             background-color: transparent;
             border: 1px solid var(--primary);
             color: var(--primary);
         }
-        
+
         .btn-outline:hover {
             background-color: var(--primary);
             color: var(--white);
         }
-        
+
         .btn-primary {
             background-color: var(--primary);
             color: var(--white);
         }
-        
+
         .btn-primary:hover {
             background-color: var(--primary-dark);
         }
-        
+
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(photos/background.jpg) no-repeat top center;
             background-size: cover;
@@ -135,23 +138,23 @@
             color: var(--white);
             text-align: center;
         }
-        
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .hero h1 {
             font-size: 48px;
             margin-bottom: 16px;
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .hero p {
             font-size: 18px;
             margin-bottom: 24px;
         }
-        
+
         .search-container {
             background-color: var(--white);
             border-radius: 12px;
@@ -164,25 +167,26 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .search-form {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
         }
-        
+
         .form-group {
             position: relative;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
             font-size: 14px;
         }
-        
-        .form-group input, .form-group select {
+
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 12px 16px;
             border: 1px solid var(--gray);
@@ -190,12 +194,13 @@
             font-family: 'Poppins', sans-serif;
             transition: border-color 0.3s;
         }
-        
-        .form-group input:focus, .form-group select:focus {
+
+        .form-group input:focus,
+        .form-group select:focus {
             border-color: var(--primary);
             outline: none;
         }
-        
+
         .search-button {
             background-color: var(--primary);
             color: var(--white);
@@ -207,15 +212,15 @@
             margin-top: 24px;
             width: 100%;
         }
-        
+
         .search-button:hover {
             background-color: var(--primary-dark);
         }
-        
+
         .section {
             padding: 64px 0;
         }
-        
+
         .section-title {
             font-size: 32px;
             text-align: center;
@@ -223,7 +228,7 @@
             position: relative;
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .section-title:after {
             content: '';
             position: absolute;
@@ -235,13 +240,13 @@
             background-color: var(--primary);
             border-radius: 2px;
         }
-        
+
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
         }
-        
+
         .feature-card {
             background-color: var(--white);
             border-radius: 12px;
@@ -249,12 +254,12 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
-        
+
         .feature-icon {
             background-color: var(--primary);
             color: var(--white);
@@ -267,23 +272,23 @@
             font-size: 24px;
             margin-bottom: 16px;
         }
-        
+
         .feature-title {
             font-size: 18px;
             margin-bottom: 12px;
             font-weight: 600;
         }
-        
+
         .feature-desc {
             color: var(--gray);
         }
-        
+
         .properties {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
         }
-        
+
         .property-card {
             background-color: var(--white);
             border-radius: 12px;
@@ -291,24 +296,24 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .property-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
-        
+
         .property-image {
             height: 200px;
             background-color: var(--gray-light);
             position: relative;
         }
-        
+
         .property-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .property-tag {
             position: absolute;
             top: 16px;
@@ -320,7 +325,7 @@
             font-size: 12px;
             font-weight: 500;
         }
-        
+
         .property-favorite {
             position: absolute;
             top: 16px;
@@ -336,368 +341,370 @@
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
         }
-        
-        .property-favorite:hover, .property-favorite.active {
+
+        .property-favorite:hover,
+        .property-favorite.active {
             background-color: #fee2e2;
             color: #ef4444;
         }
-        
+
         .property-content {
             padding: 20px;
         }
-        
+
         .property-price {
             font-size: 20px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 8px;
         }
-        
+
         .property-address {
             color: var(--gray);
             font-size: 14px;
             margin-bottom: 16px;
         }
-        
+
         .property-details {
             display: flex;
             justify-content: space-between;
             border-top: 1px solid var(--gray-light);
             padding-top: 16px;
         }
-        
+
         .property-detail {
             display: flex;
             align-items: center;
             font-size: 14px;
         }
-        
+
         .property-detail i {
             margin-right: 6px;
             color: var(--primary);
         }
 
         /* About Us Section */
-#about {
-    padding: 50px 20px;
-    background: #f9f9f9;
-    text-align: center;
-}
+        #about {
+            padding: 50px 20px;
+            background: #f9f9f9;
+            text-align: center;
+        }
 
-.about-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
-}
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-.about-text {
-    max-width: 600px;
-    text-align: left;
-}
+        .about-text {
+            max-width: 600px;
+            text-align: left;
+        }
 
-.about-text h3 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
+        .about-text h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
 
-.about-text p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-}
+        .about-text p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
 
-.about-text ul {
-    list-style: none;
-    padding: 0;
-}
+        .about-text ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.about-text ul li {
-    font-size: 16px;
-    color: #444;
-    margin: 10px 0;
-}
+        .about-text ul li {
+            font-size: 16px;
+            color: #444;
+            margin: 10px 0;
+        }
 
-.about-text ul li i {
-    color: #007bff;
-    margin-right: 8px;
-}
+        .about-text ul li i {
+            color: #007bff;
+            margin-right: 8px;
+        }
 
-.about-image img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-}
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
 
-/* Team Section */
-.team-title {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-}
+        /* Team Section */
+        .team-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-.team {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-}
+        .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
 
-.team-member {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 200px;
-}
+        .team-member {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 200px;
+        }
 
-.team-member img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
 
-.team-member h4 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 5px;
-}
+        .team-member h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
 
-.team-member p {
-    font-size: 14px;
-    color: #777;
-}
+        .team-member p {
+            font-size: 14px;
+            color: #777;
+        }
 
-.chat-button {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background-color: var(--primary);
-        color: white;
-        padding: 12px 20px;
-        border-radius: 50px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        z-index: 1000;
-        transition: all 0.3s ease;
-    }
-    
-    .chat-button:hover {
-        background-color: var(--primary-dark);
-        transform: translateY(-3px);
-    }
-    
-    .chat-button i {
-        font-size: 20px;
-        margin-right: 8px;
-    }
-    
-    .chat-popup {
-        position: fixed;
-        bottom: 100px;
-        right: 30px;
-        width: 350px;
-        height: 450px;
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        display: none;
-        flex-direction: column;
-        overflow: hidden;
-        z-index: 1001;
-        border: 1px solid #eaeaea;
-    }
-    
-    .chat-popup.active {
-        display: flex;
-    }
-    
-    .chat-header {
-        padding: 15px;
-        background-color: var(--primary);
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .chat-header h3 {
-        margin: 0;
-        font-size: 16px;
-    }
-    
-    .close-chat {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-    }
-    
-    .chat-messages {
-        flex: 1;
-        padding: 15px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .message {
-        display: flex;
-        margin-bottom: 10px;
-    }
-    
-    .message.sent {
-        justify-content: flex-end;
-    }
-    
-    .message-content {
-        max-width: 80%;
-        padding: 10px 15px;
-        border-radius: 18px;
-        position: relative;
-    }
-    
-    .message.received .message-content {
-        background-color: #f1f1f1;
-        border-bottom-left-radius: 5px;
-    }
-    
-    .message.sent .message-content {
-        background-color: var(--primary);
-        color: white;
-        border-bottom-right-radius: 5px;
-    }
-    
-    .message-content p {
-        margin: 0;
-        word-wrap: break-word;
-    }
-    
-    .message-time {
-        font-size: 10px;
-        opacity: 0.7;
-        margin-top: 5px;
-        display: block;
-    }
-    
-    .chat-input {
-        display: flex;
-        padding: 10px;
-        border-top: 1px solid #eaeaea;
-    }
-    
-    .chat-input input {
-        flex: 1;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 30px;
-        outline: none;
-    }
-    
-    .chat-input button {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        margin-left: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .chat-input button:hover {
-        background-color: var(--primary-dark);
-    }
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .chat-button i {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .chat-popup {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1001;
+            border: 1px solid #eaeaea;
+        }
+
+        .chat-popup.active {
+            display: flex;
+        }
+
+        .chat-header {
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .message.sent {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            position: relative;
+        }
+
+        .message.received .message-content {
+            background-color: #f1f1f1;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message.sent .message-content {
+            background-color: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message-content p {
+            margin: 0;
+            word-wrap: break-word;
+        }
+
+        .message-time {
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .chat-input button:hover {
+            background-color: var(--primary-dark);
+        }
 
 
-/* Footer Styles */
-.footer {
-    background-color: #222;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-}
+        /* Footer Styles */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
 
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px;
-}
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
 
-.footer-section {
-    flex: 1;
-    margin: 10px;
-    min-width: 200px;
-}
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
 
-.footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #f8b400;
-}
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #f8b400;
+        }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.footer-section ul li {
-    margin: 8px 0;
-}
+        .footer-section ul li {
+            margin: 8px 0;
+        }
 
-.footer-section ul li a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
-.footer-section ul li a:hover {
-    color: #f8b400;
-}
+        .footer-section ul li a:hover {
+            color: #f8b400;
+        }
 
-/* Social Media Icons */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
 
-.social-icons a img {
-    width: 30px;
-    height: 30px;
-    transition: 0.3s;
-}
+        .social-icons a img {
+            width: 30px;
+            height: 30px;
+            transition: 0.3s;
+        }
 
-.social-icons a img:hover {
-    transform: scale(1.2);
-}
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
 
-/* Copyright Section */
-.footer-bottom {
-    background-color: #111;
-    padding: 15px;
-    font-size: 14px;
-}
- /* Add these styles to your existing CSS */
-        
+        /* Copyright Section */
+        .footer-bottom {
+            background-color: #111;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* Add these styles to your existing CSS */
+
         /* Hamburger Menu Styles */
         .hamburger-menu {
             display: none;
             cursor: pointer;
             z-index: 200;
         }
-        
+
         .hamburger-icon {
             display: flex;
             flex-direction: column;
@@ -705,7 +712,7 @@
             width: 30px;
             height: 21px;
         }
-        
+
         .hamburger-icon span {
             display: block;
             height: 3px;
@@ -714,7 +721,7 @@
             border-radius: 3px;
             transition: all 0.3s ease;
         }
-        
+
         .mobile-nav {
             position: fixed;
             top: 0;
@@ -729,11 +736,11 @@
             flex-direction: column;
             padding: 80px 20px 20px;
         }
-        
+
         .mobile-nav.active {
             right: 0;
         }
-        
+
         .mobile-nav ul {
             list-style: none;
             padding: 0;
@@ -742,21 +749,21 @@
             flex-direction: column;
             gap: 20px;
         }
-        
+
         .mobile-nav ul li a {
             display: block;
             padding: 10px 0;
             border-bottom: 1px solid var(--gray-light);
             font-weight: 500;
         }
-        
+
         .mobile-auth-buttons {
             margin-top: 30px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-        
+
         .overlay {
             position: fixed;
             top: 0;
@@ -767,114 +774,132 @@
             z-index: 100;
             display: none;
         }
-        
+
         .overlay.active {
             display: block;
         }
-/* Media queries */
-@media (max-width: 768px) {
+
+        /* Media queries */
+        @media (max-width: 768px) {
+
             .header-container nav,
             .header-container .auth-buttons {
                 display: none;
             }
-            
+
             .hamburger-menu {
                 display: block;
             }
-            
+
             .logo {
                 font-size: 20px;
             }
-            #profileBtn{
+
+            #profileBtn {
                 display: none;
             }
         }
+
         .feature-modal {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    animation: fadeIn 0.3s;
-}
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.3s;
+        }
 
-.feature-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    animation: slideIn 0.3s;
-    text-align: center;
-}
+        .feature-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.3s;
+            text-align: center;
+        }
 
-.feature-modal-close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .feature-modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.feature-modal-close:hover,
-.feature-modal-close:focus {
-    color: black;
-    text-decoration: none;
-}
+        .feature-modal-close:hover,
+        .feature-modal-close:focus {
+            color: black;
+            text-decoration: none;
+        }
 
-@keyframes fadeIn {
-    from {opacity: 0}
-    to {opacity: 1}
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
 
-@keyframes slideIn {
-    from {transform: translateY(-50px); opacity: 0;}
-    to {transform: translateY(0); opacity: 1;}
-}
+            to {
+                opacity: 1
+            }
+        }
 
-/* Add this to make feature cards look clickable */
-.feature-card {
-    cursor: pointer;
-}
-.profile-button {
-    position: relative;
-}
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
 
-.profile-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: white;
-    box-shadow: var(--shadow);
-    border-radius: 8px;
-    width: 150px;
-    display: none;
-    z-index: 101;
-    overflow: hidden;
-}
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-.profile-button:hover .profile-dropdown {
-    display: block;
-}
+        /* Add this to make feature cards look clickable */
+        .feature-card {
+            cursor: pointer;
+        }
 
-.profile-dropdown a {
-    display: block;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-}
+        .profile-button {
+            position: relative;
+        }
 
-.profile-dropdown a:hover {
-    background-color: var(--gray-light);
-}
+        .profile-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            width: 150px;
+            display: none;
+            z-index: 101;
+            overflow: hidden;
+        }
+
+        .profile-button:hover .profile-dropdown {
+            display: block;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .profile-dropdown a:hover {
+            background-color: var(--gray-light);
+        }
     </style>
 </head>
+
 <body>
     <!-- Header Section Modification -->
     <header>
@@ -882,7 +907,7 @@
             <div class="logo">
                 <i class="fas fa-home"></i> Dream Estate
             </div>
-            
+
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -891,22 +916,24 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            
+
             <div class="auth-buttons">
-                <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="loginBtn">Login</button></a>
-                <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="signupBtn">Sign Up</button></a>
+                <a href="../login-signup/public/login.html"><button class="btn btn-outline"
+                        id="loginBtn">Login</button></a>
+                <a href="../login-signup/public/signup.html"><button class="btn btn-primary" id="signupBtn">Sign
+                        Up</button></a>
             </div>
-            
-<div class="profile-button" id="profileButton" style="display: none;">
-    <button class="btn btn-primary" id="profileBtn">
-        <i class="fas fa-user-circle"></i> <span id="profileBtnText">My Profile</span>
-    </button>
-    <div class="profile-dropdown">
-        <a href="#" id="dashboardLink">Dashboard</a>
-        <a href="#" id="logoutBtn">Logout</a>
-    </div>
-</div>
-            
+
+            <div class="profile-button" id="profileButton" style="display: none;">
+                <button class="btn btn-primary" id="profileBtn">
+                    <i class="fas fa-user-circle"></i> <span id="profileBtnText">My Profile</span>
+                </button>
+                <div class="profile-dropdown">
+                    <a href="#" id="dashboardLink">Dashboard</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+
             <!-- Add Hamburger Menu Button -->
             <div class="hamburger-menu" id="hamburgerMenu">
                 <div class="hamburger-icon">
@@ -917,7 +944,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Add Mobile Navigation Menu -->
     <div class="mobile-nav" id="mobileNav">
         <ul>
@@ -927,16 +954,18 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="mobile-auth-buttons">
-            <a href="./login-signup/public/login.html"><button class="btn btn-outline" id="mobileLoginBtn">Login</button></a>
-            <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="mobileSignupBtn">Sign Up</button></a>
+            <a href="./login-signup/public/login.html"><button class="btn btn-outline"
+                    id="mobileLoginBtn">Login</button></a>
+            <a href="./login-signup/public/signup.html"><button class="btn btn-primary" id="mobileSignupBtn">Sign
+                    Up</button></a>
         </div>
         <div class="profile-mobile" id="profileMobile" style="display: none;">
-    <div id="mobileUserName" style="text-align: center; margin-bottom: 10px; font-weight: bold;"></div>
-    <a href="#" id="mobileDashboardLink"><button class="btn btn-primary">Dashboard</button></a>
-    <button class="btn btn-outline" id="mobileLogoutBtn">Logout</button>
-</div>
+            <div id="mobileUserName" style="text-align: center; margin-bottom: 10px; font-weight: bold;"></div>
+            <a href="#" id="mobileDashboardLink"><button class="btn btn-primary">Dashboard</button></a>
+            <button class="btn btn-outline" id="mobileLogoutBtn">Logout</button>
+        </div>
     </div>
-    
+
     <!-- Add Overlay -->
     <div class="overlay" id="overlay"></div>
     <!-- Hero Section -->
@@ -948,7 +977,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Search Section -->
     <div class="container">
         <div class="search-container" style="margin-top: -6rem;">
@@ -957,7 +986,7 @@
                     <label for="location">Location</label>
                     <input type="text" id="location" placeholder="City, Neighborhood">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="property-type">Property Type</label>
                     <select id="property-type">
@@ -968,7 +997,7 @@
                         <option value="pg">PG/Hostel</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="price-range">Price Range</label>
                     <select id="price-range">
@@ -979,7 +1008,7 @@
                         <option value="50000+">₹50,000+</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="beds">Bedrooms</label>
                     <select id="beds">
@@ -991,560 +1020,583 @@
                     </select>
                 </div>
             </form>
-            
+
             <button class="search-button">
                 <i class="fas fa-search"></i> Search Properties
             </button>
         </div>
     </div>
-    
+
     <!-- Featured Properties Section -->
-<section class="section" id="properties">
-    <div class="container">
-        <h2 class="section-title">Featured Properties</h2>
-        
-        <div class="properties">
-            <!-- Property 1 -->
-            <a href="property_detail/prop1.html">
-            <div class="property-card">
-                <div class="property-image">
-                    <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=400&h=300" alt="Modern Apartment">
-                    <span class="property-tag">For Rent</span>
-                    <div class="property-favorite" data-id="1">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                
-                <div class="property-content">
-                    <div class="property-price">₹28,000/month</div>
-                    <h3 class="property-title">Modern Apartment in Ballygunge</h3>
-                    <p class="property-address">
-                        <i class="fas fa-map-marker-alt"></i> Ballygunge, Kolkata
-                    </p>
-                    
-                    <div class="property-details">
-                        <div class="property-detail">
-                            <i class="fas fa-bed"></i> 2 Beds
+    <section class="section" id="properties">
+        <div class="container">
+            <h2 class="section-title">Featured Properties</h2>
+
+            <div class="properties">
+                <!-- Property 1 -->
+                <a href="property_detail/prop1.html">
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=400&h=300"
+                                alt="Modern Apartment">
+                            <span class="property-tag">For Rent</span>
+                            <div class="property-favorite" data-id="1">
+                                <i class="far fa-heart"></i>
+                            </div>
                         </div>
-                        <div class="property-detail">
-                            <i class="fas fa-bath"></i> 2 Baths
-                        </div>
-                        <div class="property-detail">
-                            <i class="fas fa-ruler-combined"></i> 1,100 sqft
-                        </div>
-                    </div>
-                </div>
-            </div></a>
-            
-            <!-- Property 2 -->
-            <a href="./property_detail/prop2.html">
-            <div class="property-card">
-                <div class="property-image">
-                    <img src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?w=400&h=300" alt="Luxury Villa">
-                    <span class="property-tag">For Sale</span>
-                    <div class="property-favorite" data-id="2">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                
-                <div class="property-content">
-                    <div class="property-price">₹30,000/month</div>
-                    <h3 class="property-title">Luxury Villa in Salt Lake City</h3>
-                    <p class="property-address">
-                        <i class="fas fa-map-marker-alt"></i> Salt Lake City, Kolkata
-                    </p>
-                    
-                    <div class="property-details">
-                        <div class="property-detail">
-                            <i class="fas fa-bed"></i> 4 Beds
-                        </div>
-                        <div class="property-detail">
-                            <i class="fas fa-bath"></i> 3 Baths
-                        </div>
-                        <div class="property-detail">
-                            <i class="fas fa-ruler-combined"></i> 2,500 sqft
+
+                        <div class="property-content">
+                            <div class="property-price">₹28,000/month</div>
+                            <h3 class="property-title">Modern Apartment in Ballygunge</h3>
+                            <p class="property-address">
+                                <i class="fas fa-map-marker-alt"></i> Ballygunge, Kolkata
+                            </p>
+
+                            <div class="property-details">
+                                <div class="property-detail">
+                                    <i class="fas fa-bed"></i> 2 Beds
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bath"></i> 2 Baths
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-ruler-combined"></i> 1,100 sqft
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div></a>
-            
-            <!-- Property 3 -->
-            <a href="./property_detail/prop3.html">
-            <div class="property-card">
-                <div class="property-image">
-                    <img src="https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?w=400&h=300" alt="Cozy Studio">
-                    <span class="property-tag">For Rent</span>
-                    <div class="property-favorite" data-id="3">
-                        <i class="far fa-heart"></i>
+                </a>
+
+                <!-- Property 2 -->
+                <a href="./property_detail/prop2.html">
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?w=400&h=300"
+                                alt="Luxury Villa">
+                            <span class="property-tag">For Sale</span>
+                            <div class="property-favorite" data-id="2">
+                                <i class="far fa-heart"></i>
+                            </div>
+                        </div>
+
+                        <div class="property-content">
+                            <div class="property-price">₹30,000/month</div>
+                            <h3 class="property-title">Luxury Villa in Salt Lake City</h3>
+                            <p class="property-address">
+                                <i class="fas fa-map-marker-alt"></i> Salt Lake City, Kolkata
+                            </p>
+
+                            <div class="property-details">
+                                <div class="property-detail">
+                                    <i class="fas fa-bed"></i> 4 Beds
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bath"></i> 3 Baths
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-ruler-combined"></i> 2,500 sqft
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="property-content">
-                    <div class="property-price">₹16,500/month</div>
-                    <h3 class="property-title">Cozy Studio near New Town</h3>
-                    <p class="property-address">
-                        <i class="fas fa-map-marker-alt"></i> New Town, Kolkata
-                    </p>
-                    
-                    <div class="property-details">
-                        <div class="property-detail">
-                            <i class="fas fa-bed"></i> 1 Bed
+                </a>
+
+                <!-- Property 3 -->
+                <a href="./property_detail/prop3.html">
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?w=400&h=300"
+                                alt="Cozy Studio">
+                            <span class="property-tag">For Rent</span>
+                            <div class="property-favorite" data-id="3">
+                                <i class="far fa-heart"></i>
+                            </div>
                         </div>
-                        <div class="property-detail">
-                            <i class="fas fa-bath"></i> 1 Bath
-                        </div>
-                        <div class="property-detail">
-                            <i class="fas fa-ruler-combined"></i> 600 sqft
+
+                        <div class="property-content">
+                            <div class="property-price">₹16,500/month</div>
+                            <h3 class="property-title">Cozy Studio near New Town</h3>
+                            <p class="property-address">
+                                <i class="fas fa-map-marker-alt"></i> New Town, Kolkata
+                            </p>
+
+                            <div class="property-details">
+                                <div class="property-detail">
+                                    <i class="fas fa-bed"></i> 1 Bed
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-bath"></i> 1 Bath
+                                </div>
+                                <div class="property-detail">
+                                    <i class="fas fa-ruler-combined"></i> 600 sqft
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div></a>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Features Section -->
-<section class="section" id="features">
-    <div class="container">
-        <h2 class="section-title">Our Features</h2>
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Our Features</h2>
 
-        <div class="features">
-            <!-- Feature 1 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-exchange-alt"></i>
+            <div class="features">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Property Comparison</h3>
+                    <p class="feature-desc">Compare different properties side by side to make the best decision for your
+                        needs.</p>
                 </div>
-                <h3 class="feature-title">Property Comparison</h3>
-                <p class="feature-desc">Compare different properties side by side to make the best decision for your needs.</p>
-            </div>
 
-            <!-- Feature 2 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-comments"></i>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="feature-title">Direct Messaging</h3>
+                    <p class="feature-desc">Communicate directly with landlords and tenants through our secure messaging
+                        system.</p>
                 </div>
-                <h3 class="feature-title">Direct Messaging</h3>
-                <p class="feature-desc">Communicate directly with landlords and tenants through our secure messaging system.</p>
-            </div>
 
-            <!-- Feature 3 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-lock"></i>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Payments</h3>
+                    <p class="feature-desc">Multiple secure payment options including UPI, cards, and net banking with
+                        complete encryption.</p>
                 </div>
-                <h3 class="feature-title">Secure Payments</h3>
-                <p class="feature-desc">Multiple secure payment options including UPI, cards, and net banking with complete encryption.</p>
-            </div>
 
-            <!-- Feature 4 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-tools"></i>
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="feature-title">Maintenance Requests</h3>
+                    <p class="feature-desc">Easily report and track maintenance needs for your rental property.</p>
                 </div>
-                <h3 class="feature-title">Maintenance Requests</h3>
-                <p class="feature-desc">Easily report and track maintenance needs for your rental property.</p>
-            </div>
 
-            <!-- Feature 5 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-map-marked-alt"></i>
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Interactive Maps</h3>
+                    <p class="feature-desc">Explore neighborhoods with interactive maps showing nearby schools,
+                        hospitals, and markets.</p>
                 </div>
-                <h3 class="feature-title">Interactive Maps</h3>
-                <p class="feature-desc">Explore neighborhoods with interactive maps showing nearby schools, hospitals, and markets.</p>
-            </div>
 
-            <!-- Feature 6 -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-receipt"></i>
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3 class="feature-title">Rent Receipts</h3>
+                    <p class="feature-desc">Automatically generate rent receipts for all payment records with GST
+                        details.</p>
                 </div>
-                <h3 class="feature-title">Rent Receipts</h3>
-                <p class="feature-desc">Automatically generate rent receipts for all payment records with GST details.</p>
-            </div>
 
-            <!-- Feature 7 (New) -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-user-check"></i>
+                <!-- Feature 7 (New) -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="feature-title">Smart Tenant Matching</h3>
+                    <p class="feature-desc">AI-powered recommendations to match tenants with suitable properties based
+                        on preferences.</p>
                 </div>
-                <h3 class="feature-title">Smart Tenant Matching</h3>
-                <p class="feature-desc">AI-powered recommendations to match tenants with suitable properties based on preferences.</p>
-            </div>
 
-            <!-- Feature 8 (New) -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
+                <!-- Feature 8 (New) -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Based Price Estimation</h3>
+                    <p class="feature-desc">Real-time AI analysis to suggest competitive pricing for buying, selling, or
+                        renting properties.</p>
                 </div>
-                <h3 class="feature-title">AI-Based Price Estimation</h3>
-                <p class="feature-desc">Real-time AI analysis to suggest competitive pricing for buying, selling, or renting properties.</p>
-            </div>
 
-            <!-- Feature 9 (New) -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
+                <!-- Feature 9 (New) -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Verified Listings & Fraud Protection</h3>
+                    <p class="feature-desc">All properties and tenants are verified to ensure a safe and secure renting
+                        experience.</p>
                 </div>
-                <h3 class="feature-title">Verified Listings & Fraud Protection</h3>
-                <p class="feature-desc">All properties and tenants are verified to ensure a safe and secure renting experience.</p>
-            </div>
 
-            <!-- Feature 10 (New) -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-file-signature"></i>
+                <!-- Feature 10 (New) -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="feature-title">Legal Document Generator</h3>
+                    <p class="feature-desc">Generate rental agreements and lease documents automatically with
+                        e-signature support.</p>
                 </div>
-                <h3 class="feature-title">Legal Document Generator</h3>
-                <p class="feature-desc">Generate rental agreements and lease documents automatically with e-signature support.</p>
-            </div>
 
-            <!-- Feature 11 (New) -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-sync-alt"></i>
+                <!-- Feature 11 (New) -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Automated Lease Renewals</h3>
+                    <p class="feature-desc">System-generated lease renewal reminders and auto-renewal options for
+                        landlords and tenants.</p>
                 </div>
-                <h3 class="feature-title">Automated Lease Renewals</h3>
-                <p class="feature-desc">System-generated lease renewal reminders and auto-renewal options for landlords and tenants.</p>
-            </div>
 
-            <!-- Feature 12 (New) -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-pie"></i>
+                <!-- Feature 12 (New) -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="feature-title">Real-Time Property Analytics</h3>
+                    <p class="feature-desc">Track market trends, property valuation, and rental demand with real-time
+                        analytics.</p>
                 </div>
-                <h3 class="feature-title">Real-Time Property Analytics</h3>
-                <p class="feature-desc">Track market trends, property valuation, and rental demand with real-time analytics.</p>
+
+                <!-- Feature 13 (New) - Rent Payment Reminder -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="feature-title">Rent Payment Reminders</h3>
+                    <p class="feature-desc">Automated notifications and reminders for upcoming rent payments, ensuring
+                        timely transactions for both tenants and landlords.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section (Add Just Before Footer) -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Dream Estate</h3>
+                    <p>Dream Estate is your trusted real estate management platform, designed to make buying, selling,
+                        and renting properties easier than ever. With our advanced technology, verified listings, and
+                        customer-first approach, we aim to redefine the real estate experience.</p>
+
+                    <h3>Why Choose Us?</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 100% Verified Listings</li>
+                        <li><i class="fas fa-check-circle"></i> AI-Based Property Recommendations</li>
+                        <li><i class="fas fa-check-circle"></i> Secure Payment System</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 Customer Support</li>
+                    </ul>
+                </div>
+
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?w=500&h=350"
+                        alt="About Us">
+                </div>
             </div>
 
-            <!-- Feature 13 (New) - Rent Payment Reminder -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                <i class="fas fa-calendar-check"></i>
-                 </div>
-            <h3 class="feature-title">Rent Payment Reminders</h3>
-            <p class="feature-desc">Automated notifications and reminders for upcoming rent payments, ensuring timely transactions for both tenants and landlords.</p>
+            <h3 class="team-title">Meet Our Team</h3>
+            <div class="team">
+                <div class="team-member">
+                    <img src="photos/abhirup.jpg" alt="CEO">
+                    <h4>Abhirup Das</h4>
+                    <p>UI/UX Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="photos/ankit.jpg" alt="CTO">
+                    <h4>Ankit Ranjan</h4>
+                    <p>Frontend Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="photos/vishu.jpg" alt="Designer">
+                    <h4>Vishu Ansh Manglam</h4>
+                    <p>Database Administrator</p>
+                </div>
+                <div class="team-member">
+                    <img src="photos/satyam.jpg" alt="Intern">
+                    <h4>Satyam Kumar</h4>
+                    <p>Backend Developer</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <div class="chat-button" id="chatButton">
+        <i class="fas fa-comments"></i>
+        <span>Chat with Us</span>
+    </div>
+
+    <!-- Chat popup window -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h3>Dream Estate Support</h3>
+            <button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message received">
+                <div class="message-content">
+                    <p>👋 Hello! How can we help you today?</p>
+                    <span class="message-time">Just now</span>
+                </div>
             </div>
-            </div>
-</section>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
-<!-- About Us Section (Add Just Before Footer) -->
-<section class="section" id="about">
-    <div class="container">
-        <h2 class="section-title">About Us</h2>
+    <div id="featureModal" class="feature-modal">
+        <div class="feature-modal-content">
+            <span class="feature-modal-close">&times;</span>
+            <h2 id="featureModalTitle">Feature Coming Soon</h2>
+            <p id="featureModalMessage">We apologize for the inconvenience. This feature is currently under development
+                and will be available soon!</p>
+        </div>
+    </div>
 
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Welcome to Dream Estate</h3>
-                <p>Dream Estate is your trusted real estate management platform, designed to make buying, selling, and renting properties easier than ever. With our advanced technology, verified listings, and customer-first approach, we aim to redefine the real estate experience.</p>
 
-                <h3>Why Choose Us?</h3>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> 100% Verified Listings</li>
-                    <li><i class="fas fa-check-circle"></i> AI-Based Property Recommendations</li>
-                    <li><i class="fas fa-check-circle"></i> Secure Payment System</li>
-                    <li><i class="fas fa-check-circle"></i> 24/7 Customer Support</li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
 
-            <div class="about-image">
-                <img src="https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?w=500&h=350" alt="About Us">
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 Kolkata, India</p>
+                <p>📞 +91 98765 43210</p>
+                <p>📧 support@dreamestate.com</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn"></a>
+                </div>
             </div>
         </div>
 
-        <h3 class="team-title">Meet Our Team</h3>
-        <div class="team">
-            <div class="team-member">
-                <img src="photos/abhirup.jpg" alt="CEO">
-                <h4>Abhirup Das</h4>
-                <p>UI/UX Designer</p>
-            </div>
-            <div class="team-member">
-                <img src="photos/ankit.jpg" alt="CTO">
-                <h4>Ankit Ranjan</h4>
-                <p>Frontend Developer</p>
-            </div>
-            <div class="team-member">
-                <img src="photos/vishu.jpg" alt="Designer">
-                <h4>Vishu Ansh Manglam</h4>
-                <p>Database Administrator</p>
-            </div>
-            <div class="team-member">
-                <img src="photos/satyam.jpg" alt="Intern">
-                <h4>Satyam Kumar</h4>
-                <p>Backend Developer</p>
-            </div>
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dream Estate | All Rights Reserved.</p>
         </div>
-    </div>
-</section>
+    </footer>
 
-<div class="chat-button" id="chatButton">
-    <i class="fas fa-comments"></i>
-    <span>Chat with Us</span>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is logged in
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            const authButtons = document.querySelector('.auth-buttons');
+            const profileButton = document.getElementById('profileButton');
+            const profileBtnText = document.getElementById('profileBtnText');
+            const mobileAuthButtons = document.querySelector('.mobile-auth-buttons');
+            const profileMobile = document.getElementById('profileMobile');
+            const dashboardLink = document.getElementById('dashboardLink');
+            const mobileDashboardLink = document.getElementById('mobileDashboardLink');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
 
-<!-- Chat popup window -->
-<div class="chat-popup" id="chatPopup">
-    <div class="chat-header">
-        <h3>Dream Estate Support</h3>
-        <button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-        <div class="message received">
-            <div class="message-content">
-                <p>👋 Hello! How can we help you today?</p>
-                <span class="message-time">Just now</span>
-            </div>
-        </div>
-    </div>
-    <div class="chat-input">
-        <input type="text" id="messageInput" placeholder="Type your message...">
-        <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
+            // Update UI based on login status
+            if (user) {
+                // User is logged in
+                authButtons.style.display = 'none';
+                profileButton.style.display = 'block';
 
-<div id="featureModal" class="feature-modal">
-    <div class="feature-modal-content">
-        <span class="feature-modal-close">&times;</span>
-        <h2 id="featureModalTitle">Feature Coming Soon</h2>
-        <p id="featureModalMessage">We apologize for the inconvenience. This feature is currently under development and will be available soon!</p>
-    </div>
-</div>
+                // Update profile button text with user's name
+                if (user.firstName) {
+                    profileBtnText.textContent = user.firstName;
+                }
 
+                // Update mobile profile with user's name
+                const mobileUserName = document.getElementById('mobileUserName');
+                if (mobileUserName && user.firstName && user.lastName) {
+                    mobileUserName.textContent = `${user.firstName} ${user.lastName}`;
+                }
 
-<!-- Footer -->
-<footer class="footer" id="contact">
-    <div class="footer-container">
-        <!-- Quick Links -->
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#properties">Properties</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+                // Update mobile view
+                mobileAuthButtons.style.display = 'none';
+                profileMobile.style.display = 'flex';
+                profileMobile.style.flexDirection = 'column';
+                profileMobile.style.gap = '10px';
 
-        <!-- Contact Info -->
-        <div class="footer-section">
-            <h3>Contact Us</h3>
-            <p>📍 Kolkata, India</p>
-            <p>📞 +91 98765 43210</p>
-            <p>📧 support@dreamestate.com</p>
-        </div>
+                // Set dashboard link based on user type
+                const dashboardUrl = `./public/dashboard/${user.userType}-dashboard.html`;
+                dashboardLink.href = dashboardUrl;
+                mobileDashboardLink.href = dashboardUrl;
 
-        <!-- Social Media Links -->
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn"></a>
-            </div>
-        </div>
-    </div>
+                // Handle logout
+                logoutBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    localStorage.removeItem('user');
+                    window.location.reload();
+                });
 
-    <!-- Copyright -->
-    <div class="footer-bottom">
-        <p>&copy; 2025 Dream Estate | All Rights Reserved.</p>
-    </div>
-</footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Check if user is logged in
-        const user = JSON.parse(localStorage.getItem('user') || 'null');
-        const authButtons = document.querySelector('.auth-buttons');
-        const profileButton = document.getElementById('profileButton');
-        const profileBtnText = document.getElementById('profileBtnText');
-        const mobileAuthButtons = document.querySelector('.mobile-auth-buttons');
-        const profileMobile = document.getElementById('profileMobile');
-        const dashboardLink = document.getElementById('dashboardLink');
-        const mobileDashboardLink = document.getElementById('mobileDashboardLink');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
-        
-        // Update UI based on login status
-        if (user) {
-            // User is logged in
-            authButtons.style.display = 'none';
-            profileButton.style.display = 'block';
-            
-            // Update profile button text with user's name
-            if (user.firstName) {
-                profileBtnText.textContent = user.firstName;
+                mobileLogoutBtn.addEventListener('click', function () {
+                    localStorage.removeItem('user');
+                    window.location.reload();
+                });
             }
-            
-            // Update mobile profile with user's name
-            const mobileUserName = document.getElementById('mobileUserName');
-            if (mobileUserName && user.firstName && user.lastName) {
-                mobileUserName.textContent = `${user.firstName} ${user.lastName}`;
-            }
-            
-            // Update mobile view
-            mobileAuthButtons.style.display = 'none';
-            profileMobile.style.display = 'flex';
-            profileMobile.style.flexDirection = 'column';
-            profileMobile.style.gap = '10px';
-        
-            // Set dashboard link based on user type
-            const dashboardUrl = `./public/dashboard/${user.userType}-dashboard.html`;
-            dashboardLink.href = dashboardUrl;
-            mobileDashboardLink.href = dashboardUrl;
-            
-            // Handle logout
-            logoutBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                localStorage.removeItem('user');
-                window.location.reload();
+
+            // Chat functionality
+            const chatButton = document.getElementById('chatButton');
+            const chatPopup = document.getElementById('chatPopup');
+            const closeChat = document.getElementById('closeChat');
+            const messageInput = document.getElementById('messageInput');
+            const sendMessage = document.getElementById('sendMessage');
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Open chat popup
+            chatButton.addEventListener('click', function () {
+                chatPopup.classList.add('active');
             });
-            
-            mobileLogoutBtn.addEventListener('click', function() {
-                localStorage.removeItem('user');
-                window.location.reload();
+
+            // Close chat popup
+            closeChat.addEventListener('click', function () {
+                chatPopup.classList.remove('active');
             });
-        }
-        
-        // Chat functionality
-        const chatButton = document.getElementById('chatButton');
-        const chatPopup = document.getElementById('chatPopup');
-        const closeChat = document.getElementById('closeChat');
-        const messageInput = document.getElementById('messageInput');
-        const sendMessage = document.getElementById('sendMessage');
-        const chatMessages = document.getElementById('chatMessages');
-        
-        // Open chat popup
-        chatButton.addEventListener('click', function() {
-            chatPopup.classList.add('active');
-        });
-        
-        // Close chat popup
-        closeChat.addEventListener('click', function() {
-            chatPopup.classList.remove('active');
-        });
-        
-        // Send message function
-        function sendUserMessage() {
-            const message = messageInput.value.trim();
-            if (message !== '') {
-                // Add user message
-                const now = new Date();
-                const timeString = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
-                
-                const messageElement = document.createElement('div');
-                messageElement.className = 'message sent';
-                messageElement.innerHTML = `
+
+            // Send message function
+            function sendUserMessage() {
+                const message = messageInput.value.trim();
+                if (message !== '') {
+                    // Add user message
+                    const now = new Date();
+                    const timeString = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'message sent';
+                    messageElement.innerHTML = `
                     <div class="message-content">
                         <p>${message}</p>
                         <span class="message-time">${timeString}</span>
                     </div>
                 `;
-                chatMessages.appendChild(messageElement);
-                
-                // Clear input
-                messageInput.value = '';
-                
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                // Simulate response after 1 second
-                setTimeout(function() {
-                    const responseElement = document.createElement('div');
-                    responseElement.className = 'message received';
-                    responseElement.innerHTML = `
+                    chatMessages.appendChild(messageElement);
+
+                    // Clear input
+                    messageInput.value = '';
+
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    // Simulate response after 1 second
+                    setTimeout(function () {
+                        const responseElement = document.createElement('div');
+                        responseElement.className = 'message received';
+                        responseElement.innerHTML = `
                         <div class="message-content">
                             <p>Thanks for your message! Our team will get back to you shortly.</p>
                             <span class="message-time">${timeString}</span>
                         </div>
                     `;
-                    chatMessages.appendChild(responseElement);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
+                        chatMessages.appendChild(responseElement);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
+                }
             }
-        }
-        
-        // Send message on button click
-        sendMessage.addEventListener('click', sendUserMessage);
-        
-        // Send message on Enter key
-        messageInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendUserMessage();
+
+            // Send message on button click
+            sendMessage.addEventListener('click', sendUserMessage);
+
+            // Send message on Enter key
+            messageInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+
+            // Hamburger menu functionality
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+
+            function toggleMenu() {
+                mobileNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+
+            hamburgerMenu.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+
+            // Close menu when clicking on navigation links
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+            // Search button functionality
+            const searchButton = document.querySelector('.search-button');
+            if (searchButton) {
+                searchButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    alert('We apologize, but the search functionality is currently under development. Please check back soon for this feature!');
+                });
             }
         });
-        
-        // Hamburger menu functionality
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const mobileNav = document.getElementById('mobileNav');
-        const overlay = document.getElementById('overlay');
-        
-        function toggleMenu() {
-            mobileNav.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-        
-        hamburgerMenu.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking on navigation links
-        const mobileNavLinks = mobileNav.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
-                overlay.classList.remove('active');
+    </script>
+    <script>
+        // Feature modal functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the modal
+            const modal = document.getElementById('featureModal');
+            const modalTitle = document.getElementById('featureModalTitle');
+            const modalMessage = document.getElementById('featureModalMessage');
+            const closeBtn = document.querySelector('.feature-modal-close');
+
+            // Get all feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+
+            // When the user clicks on a feature card, open the modal
+            featureCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const featureTitle = this.querySelector('.feature-title').textContent;
+
+                    // Set modal content
+                    modalTitle.textContent = featureTitle + " - Coming Soon";
+                    modalMessage.textContent = "We apologize for the inconvenience. The " + featureTitle + " feature is currently under development and will be available soon!";
+
+                    // Display the modal
+                    modal.style.display = "block";
+                });
             });
-        });
-    // Search button functionality
-const searchButton = document.querySelector('.search-button');
-if (searchButton) {
-    searchButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('We apologize, but the search functionality is currently under development. Please check back soon for this feature!');
-    });
-}
-    });
-</script>
-<script>
-    // Feature modal functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the modal
-        const modal = document.getElementById('featureModal');
-        const modalTitle = document.getElementById('featureModalTitle');
-        const modalMessage = document.getElementById('featureModalMessage');
-        const closeBtn = document.querySelector('.feature-modal-close');
-        
-        // Get all feature cards
-        const featureCards = document.querySelectorAll('.feature-card');
-        
-        // When the user clicks on a feature card, open the modal
-        featureCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const featureTitle = this.querySelector('.feature-title').textContent;
-                
-                // Set modal content
-                modalTitle.textContent = featureTitle + " - Coming Soon";
-                modalMessage.textContent = "We apologize for the inconvenience. The " + featureTitle + " feature is currently under development and will be available soon!";
-                
-                // Display the modal
-                modal.style.display = "block";
-            });
-        });
-        
-        // When the user clicks on the close button, close the modal
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = "none";
-        });
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
+
+            // When the user clicks on the close button, close the modal
+            closeBtn.addEventListener('click', function () {
                 modal.style.display = "none";
-            }
+            });
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
+
 </html>
