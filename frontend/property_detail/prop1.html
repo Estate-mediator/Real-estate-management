@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +13,18 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
+
     body {
       background-color: #f5f5f5;
       color: #333;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
-    
+
     header {
       display: flex;
       justify-content: space-between;
@@ -31,49 +32,49 @@
       padding: 20px 0;
       border-bottom: 1px solid #eee;
     }
-    
+
     .logo {
       font-size: 24px;
       font-weight: bold;
       color: #3478F6;
     }
-    
+
     nav {
       display: flex;
       gap: 20px;
     }
-    
+
     nav a {
       text-decoration: none;
       color: #555;
       font-weight: 500;
     }
-    
+
     .property-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin: 30px 0;
     }
-    
+
     .property-title h1 {
       font-size: 28px;
       margin-bottom: 10px;
     }
-    
+
     .property-location {
       display: flex;
       align-items: center;
       color: #666;
       margin-bottom: 10px;
     }
-    
+
     .property-price {
       font-size: 28px;
       font-weight: bold;
       color: #3478F6;
     }
-    
+
     .gallery {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -81,37 +82,37 @@
       gap: 15px;
       margin-bottom: 30px;
     }
-    
+
     .main-image {
       grid-row: span 2;
       border-radius: 12px;
       overflow: hidden;
     }
-    
+
     .small-image {
       border-radius: 12px;
       overflow: hidden;
     }
-    
+
     .gallery img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     .content-area {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 30px;
     }
-    
+
     .property-details {
       background: white;
       border-radius: 12px;
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
-    
+
     .features {
       display: flex;
       gap: 50px;
@@ -119,59 +120,59 @@
       padding-bottom: 20px;
       border-bottom: 1px solid #eee;
     }
-    
+
     .feature {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    
+
     .feature-icon {
       color: #3478F6;
       font-size: 20px;
     }
-    
+
     .section-title {
       font-size: 20px;
       margin: 20px 0 15px 0;
     }
-    
+
     .amenities {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
       margin-bottom: 20px;
     }
-    
+
     .amenity {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    
+
     .booking-card {
       background: white;
       border-radius: 12px;
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 20px;
     }
-    
+
     .date-picker {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       margin: 20px 0;
     }
-    
+
     .date-input {
       width: 100%;
       padding: 12px;
       border: 1px solid #ddd;
       border-radius: 6px;
     }
-    
+
     .cta-button {
       background-color: #3478F6;
       color: white;
@@ -185,29 +186,29 @@
       margin-top: 10px;
       transition: background-color 0.2s;
     }
-    
+
     .cta-button:hover {
       background-color: #2361d9;
     }
-    
+
     .total-price {
       display: flex;
       justify-content: space-between;
       margin: 20px 0;
       font-weight: 500;
     }
-    
+
     .total-price-value {
       font-weight: bold;
     }
-    
+
     .owner-info {
       display: flex;
       align-items: center;
       gap: 15px;
       margin: 20px 0;
     }
-    
+
     .contact-button {
       background-color: transparent;
       color: #3478F6;
@@ -220,43 +221,43 @@
       cursor: pointer;
       transition: background-color 0.2s;
     }
-    
+
     .contact-button:hover {
       background-color: rgba(52, 120, 246, 0.1);
     }
-    
+
     .map {
       margin-top: 30px;
       border-radius: 12px;
       overflow: hidden;
       height: 300px;
     }
-    
+
     .availability-calendar {
       margin-top: 30px;
     }
-    
+
     .rating {
       display: flex;
       align-items: center;
       gap: 5px;
       color: #ff9800;
     }
-    
+
     /* Feedback Section Styles */
     .feedback-section {
       background: white;
       border-radius: 12px;
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
-    
+
     .feedback-form {
       margin-top: 20px;
       padding-top: 20px;
       border-top: 1px solid #eee;
     }
-    
+
     .feedback-form textarea {
       width: 100%;
       padding: 12px;
@@ -266,26 +267,26 @@
       margin-bottom: 15px;
       resize: vertical;
     }
-    
+
     .star-rating {
       display: flex;
       gap: 5px;
       margin: 15px 0;
     }
-    
+
     .star-rating svg {
       cursor: pointer;
     }
-    
+
     .star-rating svg:hover path,
     .star-rating svg.active path {
       fill: #ff9800;
     }
-    
+
     .feedback-list {
       margin-top: 30px;
     }
-    
+
     .feedback-item {
       padding: 20px 0;
       border-top: 1px solid #eee;
@@ -293,17 +294,17 @@
       grid-template-columns: 80px 1fr;
       gap: 15px;
     }
-    
+
     .feedback-item:first-child {
       border-top: none;
     }
-    
+
     .feedback-user {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    
+
     .user-avatar {
       width: 50px;
       height: 50px;
@@ -316,20 +317,20 @@
       font-weight: bold;
       margin-bottom: 5px;
     }
-    
+
     .feedback-content h4 {
       margin-bottom: 5px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    
+
     .feedback-date {
       font-size: 12px;
       color: #999;
       font-weight: normal;
     }
-    
+
     .feedback-stars {
       display: flex;
       gap: 2px;
@@ -359,36 +360,37 @@
     .hidden {
       display: none;
     }
-    
+
     @media (max-width: 900px) {
       .gallery {
         grid-template-columns: 1fr;
         grid-template-rows: 300px 150px 150px;
       }
-      
+
       .main-image {
         grid-row: span 1;
       }
-      
+
       .content-area {
         grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
       <div class="logo"><i class="fas fa-home"></i> Dream Estate</div>
       <nav>
-        <a href="../index.html">Home</a>
+        <a href="../public/index.html">Home</a>
         <a href="#">Rent</a>
         <a href="#">Buy</a>
         <a href="#">Saved</a>
         <a href="#">Profile</a>
       </nav>
     </header>
-    
+
     <div class="property-header">
       <div class="property-title">
         <h1>Modern Apartment in Ballygunge</h1>
@@ -401,26 +403,30 @@
         </div>
         <div class="rating">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff9800" stroke="#ff9800">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+            </polygon>
           </svg>
           <span id="average-rating">4.8 (42 reviews)</span>
         </div>
       </div>
       <div class="property-price">₹28,000/month</div>
     </div>
-    
+
     <div class="gallery">
       <div class="main-image">
-        <img src="https://images.pexels.com/photos/8572135/pexels-photo-8572135.jpeg" alt="Modern Black and Gray Sectional Couch" class="room-image">
+        <img src="https://images.pexels.com/photos/8572135/pexels-photo-8572135.jpeg"
+          alt="Modern Black and Gray Sectional Couch" class="room-image">
       </div>
       <div class="small-image">
         <img src="https://decoholic.org/wp-content/uploads/2021/08/Small-Living-Room-With-TV-Idea.jpeg">
       </div>
       <div class="small-image">
-        <img src="https://images.pexels.com/photos/1757313/pexels-photo-1757313.jpeg?cs=srgb&dl=contemporary-indoors-inside-1757313.jpg&fm=jpg">
+        <img
+          src="https://images.pexels.com/photos/1757313/pexels-photo-1757313.jpeg?cs=srgb&dl=contemporary-indoors-inside-1757313.jpg&fm=jpg">
       </div>
     </div>
-    
+
     <div class="content-area">
       <div class="property-info">
         <div class="property-details">
@@ -458,11 +464,15 @@
               </div>
             </div>
           </div>
-          
+
           <h3 class="section-title">Description</h3>
-          <p>Experience modern living in this beautifully designed 2-bedroom apartment in the heart of Ballygunge. This fully furnished apartment features contemporary interiors, high-quality finishes, and an open floor plan perfect for both relaxation and entertaining.</p>
-          <p>The apartment offers ample natural light, a modern kitchen with premium appliances, and a spacious living area. Located in a secure building with 24/7 security, this property is ideal for professionals or small families looking for comfort and convenience in one of Kolkata's most desirable neighborhoods.</p>
-          
+          <p>Experience modern living in this beautifully designed 2-bedroom apartment in the heart of Ballygunge. This
+            fully furnished apartment features contemporary interiors, high-quality finishes, and an open floor plan
+            perfect for both relaxation and entertaining.</p>
+          <p>The apartment offers ample natural light, a modern kitchen with premium appliances, and a spacious living
+            area. Located in a secure building with 24/7 security, this property is ideal for professionals or small
+            families looking for comfort and convenience in one of Kolkata's most desirable neighborhoods.</p>
+
           <h3 class="section-title">Amenities</h3>
           <div class="amenities">
             <div class="amenity">
@@ -527,7 +537,7 @@
       <!-- Feedback Section -->
       <div class="feedback-section">
         <h3 class="section-title">Reviews & Feedback</h3>
-        
+
         <!-- Feedback List -->
         <div class="feedback-list" id="feedback-list">
           <!-- Reviews will be loaded dynamically -->
@@ -535,86 +545,103 @@
             <p>Loading reviews...</p>
           </div>
         </div>
-        
+
         <!-- Add Feedback Form -->
         <div class="feedback-form">
           <h3 class="section-title">Share Your Experience</h3>
           <div id="alert-message" class="alert hidden"></div>
-          <input type="text" id="reviewer-name" class="date-input" placeholder="Your Name" style="margin-bottom: 15px;" required>
-          
+          <input type="text" id="reviewer-name" class="date-input" placeholder="Your Name" style="margin-bottom: 15px;"
+            required>
+
           <div class="star-rating" id="star-rating">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="1">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star"
+              data-value="1">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="2">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star"
+              data-value="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="3">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star"
+              data-value="3">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="4">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star"
+              data-value="4">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
             </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star" data-value="5">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" class="star"
+              data-value="5">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
             </svg>
           </div>
-          
-          <input type="text" id="review-title" class="date-input" placeholder="Review Title" style="margin-bottom: 15px;" required>
+
+          <input type="text" id="review-title" class="date-input" placeholder="Review Title"
+            style="margin-bottom: 15px;" required>
           <textarea id="review-comment" placeholder="Share your experience with this property..." required></textarea>
           <button id="submit-review" class="cta-button">Submit Feedback</button>
         </div>
       </div>
-</div>
+    </div>
 
-      <div class="booking-sidebar">
-        <div class="booking-card">
-          <h3>Book this property</h3>
-          <div class="date-picker">
-            <input type="date" class="date-input" placeholder="Move-in Date">
-            <input type="date" class="date-input" placeholder="Move-out Date">
-          </div>
-          
-          <select class="date-input">
-            <option>Rental Duration</option>
-            <option>6 Months</option>
-            <option>12 Months</option>
-            <option>18 Months</option>
-            <option>24 Months</option>
-          </select>
-          
-          <div class="total-price">
-            <span>Monthly Rent:</span>
-            <span class="total-price-value">₹28,000</span>
-          </div>
-          
-          <div class="total-price">
-            <span>Security Deposit:</span>
-            <span class="total-price-value">₹56,000</span>
-          </div>
-          
-          <button class="cta-button">Book Property</button>
-          
-          <div class="owner-info">
-            <div>
-              <div><strong>Rahul Sharma</strong></div>
-              <div>Property Owner</div>
-            </div>
-          </div>
-          
-          <button class="contact-button">Contact Owner</button>
+    <div class="booking-sidebar">
+      <div class="booking-card">
+        <h3>Book this property</h3>
+        <div class="date-picker">
+          <input type="date" class="date-input" placeholder="Move-in Date">
+          <input type="date" class="date-input" placeholder="Move-out Date">
         </div>
+
+        <select class="date-input">
+          <option>Rental Duration</option>
+          <option>6 Months</option>
+          <option>12 Months</option>
+          <option>18 Months</option>
+          <option>24 Months</option>
+        </select>
+
+        <div class="total-price">
+          <span>Monthly Rent:</span>
+          <span class="total-price-value">₹28,000</span>
+        </div>
+
+        <div class="total-price">
+          <span>Security Deposit:</span>
+          <span class="total-price-value">₹56,000</span>
+        </div>
+
+        <button class="cta-button">Book Property</button>
+
+        <div class="owner-info">
+          <div>
+            <div><strong>Rahul Sharma</strong></div>
+            <div>Property Owner</div>
+          </div>
+        </div>
+
+        <button class="contact-button">Contact Owner</button>
       </div>
     </div>
+  </div>
   </div>
   <script>
     // Property ID - this would typically come from your database
     const propertyId = "6462a8f9e4b0a6d8f1234567"; // Example ID for property 1
     let currentRating = 0;
-    
+
     // Star rating functionality
     const stars = document.querySelectorAll('.star-rating .star');
-    
+
     stars.forEach((star, index) => {
       star.addEventListener('click', () => {
         // Reset all stars
@@ -623,7 +650,7 @@
           s.setAttribute('stroke', '#ddd');
           s.classList.remove('active');
         });
-        
+
         // Fill clicked star and all stars before it
         currentRating = parseInt(star.getAttribute('data-value'));
         for (let i = 0; i < currentRating; i++) {
@@ -632,7 +659,7 @@
           stars[i].classList.add('active');
         }
       });
-      
+
       star.addEventListener('mouseover', () => {
         // Preview hover effect
         const value = parseInt(star.getAttribute('data-value'));
@@ -642,7 +669,7 @@
           }
         }
       });
-      
+
       star.addEventListener('mouseout', () => {
         // Remove preview on mouse out
         stars.forEach(s => {
@@ -662,10 +689,10 @@
     // Function to create review HTML
     function createReviewElement(review) {
       const initials = review.name.split(' ').map(n => n[0]).join('').toUpperCase();
-      
+
       const reviewElement = document.createElement('div');
       reviewElement.className = 'feedback-item';
-      
+
       // Create star icons based on rating
       let starsHTML = '';
       for (let i = 0; i < 5; i++) {
@@ -675,7 +702,7 @@
           starsHTML += '<i class="far fa-star"></i>';
         }
       }
-      
+
       reviewElement.innerHTML = `
         <div class="feedback-user">
           <div class="user-avatar">${initials}</div>
@@ -692,105 +719,105 @@
           <p>${review.comment}</p>
         </div>
       `;
-      
+
       return reviewElement;
     }
 
-// Function to load reviews
-async function loadReviews() {
-  try {
-    // Get reviews from localStorage
-    const storedReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
-    
-    const feedbackList = document.getElementById('feedback-list');
-    feedbackList.innerHTML = '';
-    
-    if (storedReviews.length > 0) {
-      // Update average rating
-      const totalRating = storedReviews.reduce((sum, review) => sum + review.rating, 0);
-      const averageRating = (totalRating / storedReviews.length).toFixed(1);
-      document.getElementById('average-rating').textContent = `${averageRating} (${storedReviews.length} reviews)`;
-      
-      // Add reviews to the list
-      storedReviews.forEach(review => {
-        feedbackList.appendChild(createReviewElement(review));
-      });
-    } else {
-      feedbackList.innerHTML = '<p>No reviews yet. Be the first to leave a review!</p>';
-    }
-  } catch (error) {
-    console.error('Error loading reviews:', error);
-    document.getElementById('feedback-list').innerHTML = '<p>Failed to load reviews. Please try again later.</p>';
-  }
-}
+    // Function to load reviews
+    async function loadReviews() {
+      try {
+        // Get reviews from localStorage
+        const storedReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
 
-// Function to submit a review
-async function submitReview() {
-  const name = document.getElementById('reviewer-name').value;
-  const title = document.getElementById('review-title').value;
-  const comment = document.getElementById('review-comment').value;
-  const alertMessage = document.getElementById('alert-message');
-  
-  // Validate inputs
-  if (!name || !title || !comment || currentRating === 0) {
-    alertMessage.textContent = 'Please fill all fields and select a rating';
-    alertMessage.className = 'alert alert-error';
-    alertMessage.classList.remove('hidden');
-    return;
-  }
-  
-  try {
-    // Create review object
-    const review = {
-      propertyId,
-      name,
-      title,
-      rating: currentRating,
-      comment,
-      createdAt: new Date().toISOString()
-    };
-    
-    // Get existing reviews from localStorage
-    const existingReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
-    
-    // Add new review
-    existingReviews.push(review);
-    
-    // Save back to localStorage
-    localStorage.setItem(`reviews_${propertyId}`, JSON.stringify(existingReviews));
-    
-    // Clear form
-    document.getElementById('reviewer-name').value = '';
-    document.getElementById('review-title').value = '';
-    document.getElementById('review-comment').value = '';
-    
-    // Reset stars
-    stars.forEach(s => {
-      s.setAttribute('fill', 'none');
-      s.setAttribute('stroke', '#ddd');
-      s.classList.remove('active');
-    });
-    currentRating = 0;
-    
-    // Show success message
-    alertMessage.textContent = 'Review submitted successfully!';
-    alertMessage.className = 'alert alert-success';
-    alertMessage.classList.remove('hidden');
-    
-    // Reload reviews
-    loadReviews();
-    
-    // Hide message after 3 seconds
-    setTimeout(() => {
-      alertMessage.classList.add('hidden');
-    }, 3000);
-  } catch (error) {
-    console.error('Error submitting review:', error);
-    alertMessage.textContent = error.message || 'Failed to submit review. Please try again.';
-    alertMessage.className = 'alert alert-error';
-    alertMessage.classList.remove('hidden');
-  }
-}
+        const feedbackList = document.getElementById('feedback-list');
+        feedbackList.innerHTML = '';
+
+        if (storedReviews.length > 0) {
+          // Update average rating
+          const totalRating = storedReviews.reduce((sum, review) => sum + review.rating, 0);
+          const averageRating = (totalRating / storedReviews.length).toFixed(1);
+          document.getElementById('average-rating').textContent = `${averageRating} (${storedReviews.length} reviews)`;
+
+          // Add reviews to the list
+          storedReviews.forEach(review => {
+            feedbackList.appendChild(createReviewElement(review));
+          });
+        } else {
+          feedbackList.innerHTML = '<p>No reviews yet. Be the first to leave a review!</p>';
+        }
+      } catch (error) {
+        console.error('Error loading reviews:', error);
+        document.getElementById('feedback-list').innerHTML = '<p>Failed to load reviews. Please try again later.</p>';
+      }
+    }
+
+    // Function to submit a review
+    async function submitReview() {
+      const name = document.getElementById('reviewer-name').value;
+      const title = document.getElementById('review-title').value;
+      const comment = document.getElementById('review-comment').value;
+      const alertMessage = document.getElementById('alert-message');
+
+      // Validate inputs
+      if (!name || !title || !comment || currentRating === 0) {
+        alertMessage.textContent = 'Please fill all fields and select a rating';
+        alertMessage.className = 'alert alert-error';
+        alertMessage.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        // Create review object
+        const review = {
+          propertyId,
+          name,
+          title,
+          rating: currentRating,
+          comment,
+          createdAt: new Date().toISOString()
+        };
+
+        // Get existing reviews from localStorage
+        const existingReviews = JSON.parse(localStorage.getItem(`reviews_${propertyId}`)) || [];
+
+        // Add new review
+        existingReviews.push(review);
+
+        // Save back to localStorage
+        localStorage.setItem(`reviews_${propertyId}`, JSON.stringify(existingReviews));
+
+        // Clear form
+        document.getElementById('reviewer-name').value = '';
+        document.getElementById('review-title').value = '';
+        document.getElementById('review-comment').value = '';
+
+        // Reset stars
+        stars.forEach(s => {
+          s.setAttribute('fill', 'none');
+          s.setAttribute('stroke', '#ddd');
+          s.classList.remove('active');
+        });
+        currentRating = 0;
+
+        // Show success message
+        alertMessage.textContent = 'Review submitted successfully!';
+        alertMessage.className = 'alert alert-success';
+        alertMessage.classList.remove('hidden');
+
+        // Reload reviews
+        loadReviews();
+
+        // Hide message after 3 seconds
+        setTimeout(() => {
+          alertMessage.classList.add('hidden');
+        }, 3000);
+      } catch (error) {
+        console.error('Error submitting review:', error);
+        alertMessage.textContent = error.message || 'Failed to submit review. Please try again.';
+        alertMessage.className = 'alert alert-error';
+        alertMessage.classList.remove('hidden');
+      }
+    }
 
     // Add event listener to submit button
     document.getElementById('submit-review').addEventListener('click', submitReview);
@@ -799,4 +826,5 @@ async function submitReview() {
     document.addEventListener('DOMContentLoaded', loadReviews);
   </script>
 </body>
+
 </html>

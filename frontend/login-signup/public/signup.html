@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,7 +151,8 @@
             font-weight: 500;
         }
 
-        .form-group input, .form-group select {
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid #ddd;
@@ -159,7 +161,8 @@
             transition: border-color 0.3s;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus,
+        .form-group select:focus {
             border-color: #4c84ff;
             outline: none;
         }
@@ -277,14 +280,18 @@
             text-decoration: underline;
         }
 
-        .tenant-fields, .landlord-fields, .custodian-fields {
+        .tenant-fields,
+        .landlord-fields,
+        .custodian-fields {
             display: none;
         }
 
-        .tenant-fields.active, .landlord-fields.active, .custodian-fields.active {
+        .tenant-fields.active,
+        .landlord-fields.active,
+        .custodian-fields.active {
             display: block;
         }
-        
+
         .homeBtn {
             position: absolute;
             left: 20px;
@@ -303,7 +310,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .homeBtn:hover {
             background: rgba(252, 220, 162, 0.7);
         }
@@ -313,27 +320,27 @@
             .container {
                 max-width: 768px;
             }
-            
+
             .signup-form {
                 padding: 25px 20px;
             }
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 max-height: none;
             }
-            
+
             .signup-form {
                 max-height: none;
                 padding: 25px 20px;
             }
-            
+
             .signup-header h1 {
                 font-size: 24px;
             }
-            
+
             .homeBtn {
                 position: fixed;
                 left: 15px;
@@ -342,57 +349,58 @@
                 height: 2.5rem;
             }
         }
-        
+
         @media (max-width: 576px) {
             body {
                 padding: 10px;
             }
-            
+
             .container {
                 border-radius: 8px;
                 width: 100%;
             }
-            
+
             .signup-form {
                 padding: 20px 15px;
             }
-            
+
             .form-row {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .user-type-options {
                 flex-direction: column;
             }
-            
+
             .form-group {
                 margin-bottom: 12px;
             }
-            
-            .form-group input, .form-group select {
+
+            .form-group input,
+            .form-group select {
                 padding: 10px;
                 font-size: 14px;
             }
-            
+
             .terms {
                 margin-bottom: 15px;
             }
-            
+
             .signup-btn {
                 padding: 10px;
             }
         }
-        
+
         @media (max-width: 350px) {
             .signup-form {
                 padding: 15px 12px;
             }
-            
+
             .signup-header h1 {
                 font-size: 20px;
             }
-            
+
             .homeBtn {
                 width: 2.2rem;
                 height: 2.2rem;
@@ -400,11 +408,12 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Left side with image and branding -->
         <div class="image-container">
-            <a href="../../index.html"><button class="homeBtn"><i class="bi bi-arrow-left"></i></button></a>
+            <a href="../../public/index.html"><button class="homeBtn"><i class="bi bi-arrow-left"></i></button></a>
             <div class="branding">
                 <h2><i class="fas fa-home"></i> Dream Estate</h2>
                 <p>Join our community and find the perfect property for your needs.</p>
@@ -537,7 +546,8 @@
 
                 <div class="terms">
                     <label>
-                        <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a
+                            href="#">Privacy Policy</a>
                     </label>
                 </div>
 
@@ -563,13 +573,13 @@
     <script>
         // Script to handle user type selection
         document.querySelectorAll('.user-option').forEach(option => {
-            option.addEventListener('click', function() {
+            option.addEventListener('click', function () {
                 // Update active button
                 document.querySelectorAll('.user-option').forEach(opt => {
                     opt.classList.remove('active');
                 });
                 this.classList.add('active');
-                
+
                 // Show/hide appropriate fields
                 const userType = this.getAttribute('data-type');
                 document.querySelectorAll('.tenant-fields, .landlord-fields, .custodian-fields').forEach(fields => {
@@ -581,67 +591,68 @@
     </script>
     <script>
         // Handle signup form submission
-        document.querySelector('form').addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
-          const userType = document.querySelector('.user-option.active').getAttribute('data-type');
-          
-          // Basic user data
-          const userData = {
-            firstName: document.getElementById('first-name').value,
-            lastName: document.getElementById('last-name').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value,
-            phone: document.getElementById('phone').value,
-            address: document.getElementById('address').value,
-            city: document.getElementById('city').value,
-            pincode: document.getElementById('pincode').value,
-            userType: userType
-          };
-          
-          // Add role-specific data
-          if (userType === 'tenant') {
-            userData.occupation = document.getElementById('occupation').value;
-            userData.budget = document.getElementById('budget').value;
-            userData.preferredLocation = document.getElementById('preferred-location').value;
-          } else if (userType === 'landlord') {
-            userData.propertyCount = document.getElementById('property-count').value;
-            userData.propertyType = document.getElementById('property-type').value;
-            userData.businessName = document.getElementById('business-name').value;
-          } else if (userType === 'custodian') {
-            userData.experience = document.getElementById('experience').value;
-            userData.skills = document.getElementById('skills').value;
-            userData.availability = document.getElementById('availability').value;
-          }
-          
-          // Validate password match
-          if (userData.password !== document.getElementById('confirm-password').value) {
-            alert('Passwords do not match');
-            return;
-          }
-          
-          try {
-            const response = await fetch('http://localhost:3000/api/signup', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(userData)
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-              alert('Signup successful! Please login.');
-              window.location.href = 'login.html';
-            } else {
-              alert(data.message || 'Signup failed. Please try again.');
+        document.querySelector('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const userType = document.querySelector('.user-option.active').getAttribute('data-type');
+
+            // Basic user data
+            const userData = {
+                firstName: document.getElementById('first-name').value,
+                lastName: document.getElementById('last-name').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                pincode: document.getElementById('pincode').value,
+                userType: userType
+            };
+
+            // Add role-specific data
+            if (userType === 'tenant') {
+                userData.occupation = document.getElementById('occupation').value;
+                userData.budget = document.getElementById('budget').value;
+                userData.preferredLocation = document.getElementById('preferred-location').value;
+            } else if (userType === 'landlord') {
+                userData.propertyCount = document.getElementById('property-count').value;
+                userData.propertyType = document.getElementById('property-type').value;
+                userData.businessName = document.getElementById('business-name').value;
+            } else if (userType === 'custodian') {
+                userData.experience = document.getElementById('experience').value;
+                userData.skills = document.getElementById('skills').value;
+                userData.availability = document.getElementById('availability').value;
             }
-          } catch (error) {
-            console.error('Error during signup:', error);
-            alert('An error occurred. Please try again later.');
-          }
+
+            // Validate password match
+            if (userData.password !== document.getElementById('confirm-password').value) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Signup successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data.message || 'Signup failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error during signup:', error);
+                alert('An error occurred. Please try again later.');
+            }
         });
-      </script>
+    </script>
 </body>
+
 </html>

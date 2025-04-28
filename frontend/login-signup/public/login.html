@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -272,7 +273,7 @@
         .user-option:hover:not(.active) {
             border-color: #4c84ff;
         }
-        
+
         .homeBtn {
             position: absolute;
             left: 20px;
@@ -291,7 +292,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .homeBtn:hover {
             background: rgba(252, 220, 162, 0.7);
         }
@@ -301,19 +302,19 @@
             .container {
                 max-width: 700px;
             }
-            
+
             .login-form {
                 padding: 30px;
             }
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 width: 100%;
                 flex-direction: column;
                 max-height: none;
             }
-            
+
             .homeBtn {
                 position: fixed;
                 left: 15px;
@@ -321,86 +322,87 @@
                 width: 2.5rem;
                 height: 2.5rem;
             }
-            
+
             .login-form {
                 padding: 25px 20px;
             }
-            
+
             .login-header h1 {
                 font-size: 24px;
             }
-            
+
             .user-type-options {
                 flex-wrap: wrap;
             }
         }
-        
+
         @media (max-width: 480px) {
             body {
                 padding: 10px;
             }
-            
+
             .container {
                 width: 100%;
                 border-radius: 8px;
                 min-height: auto;
             }
-            
+
             .login-form {
                 padding: 20px 15px;
             }
-            
+
             .login-header h1 {
                 font-size: 22px;
             }
-            
+
             .form-group input {
                 padding: 10px 12px;
             }
-            
+
             .remember {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .user-type-options {
                 flex-direction: column;
             }
-            
+
             .user-option {
                 padding: 10px;
             }
-            
+
             .branding h2 {
                 font-size: 24px;
             }
-            
+
             .branding p {
                 font-size: 14px;
             }
-            
+
             .homeBtn {
                 width: 2.2rem;
                 height: 2.2rem;
             }
         }
-        
+
         @media (max-width: 350px) {
             .login-form {
                 padding: 15px 12px;
             }
-            
+
             .login-header h1 {
                 font-size: 20px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Left side with image and branding -->
         <div class="image-container">
-            <a href="../../index.html"><button class="homeBtn"><i class="bi bi-arrow-left"></i></button></a>
+            <a href="../../public/index.html"><button class="homeBtn"><i class="bi bi-arrow-left"></i></button></a>
             <div class="branding">
                 <h2><i class="fas fa-home"></i> Dream Estate</h2>
                 <p>Find your perfect home with our real estate management platform.</p>
@@ -424,7 +426,7 @@
                         <div class="user-option" data-type="custodian">Custodian</div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" placeholder="Enter your email" required>
@@ -464,48 +466,49 @@
     <script>
         // Handle user type selection
         document.querySelectorAll('.user-option').forEach(option => {
-            option.addEventListener('click', function() {
+            option.addEventListener('click', function () {
                 document.querySelectorAll('.user-option').forEach(opt => {
                     opt.classList.remove('active');
                 });
                 this.classList.add('active');
             });
         });
-        
+
         // Handle login form submission
-        document.querySelector('form').addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          const userType = document.querySelector('.user-option.active').getAttribute('data-type');
-          
-          try {
-            const response = await fetch('http://localhost:3000/api/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ email, password, userType })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-              // Store user data in local storage
-              localStorage.setItem('user', JSON.stringify(data.user));
-              alert('Login successful!');
-              
-              // Redirect directly to the dashboard based on user type
-              window.location.href = `../../public/dashboard/${userType}-dashboard.html`;
-            } else {
-              alert(data.message || 'Login failed. Please try again.');
+        document.querySelector('form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.querySelector('.user-option.active').getAttribute('data-type');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password, userType })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Store user data in local storage
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    alert('Login successful!');
+
+                    // Redirect directly to the dashboard based on user type
+                    window.location.href = `../../public/public/dashboard/${userType}-dashboard.html`;
+                } else {
+                    alert(data.message || 'Login failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('An error occurred. Please try again later.');
             }
-          } catch (error) {
-            console.error('Error during login:', error);
-            alert('An error occurred. Please try again later.');
-          }
         });
     </script>
 </body>
+
 </html>
