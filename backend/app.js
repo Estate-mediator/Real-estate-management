@@ -18,7 +18,14 @@ const app = express()
 // app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, "../public")))
 app.use(express.json())
-app.use(cors())
+
+const corsOptions = {
+  origin: "https://real-estate-management-eta.vercel.app/", // Replace with your actual frontend's deployed URL
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  credentials: true // Enable if you are using cookies or authentication
+};
+
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api", require("./routes/userRoutes"))
