@@ -402,7 +402,7 @@
     <div class="container">
         <!-- Left side with image and branding -->
         <div class="image-container">
-            <a href="../../public/index.html"><button class="homeBtn"><i class="bi bi-arrow-left"></i></button></a>
+            <a href="../../index.html"><button class="homeBtn"><i class="bi bi-arrow-left"></i></button></a>
             <div class="branding">
                 <h2><i class="fas fa-home"></i> Dream Estate</h2>
                 <p>Find your perfect home with our real estate management platform.</p>
@@ -499,7 +499,7 @@
                     alert('Login successful!');
 
                     // Redirect directly to the dashboard based on user type
-                    window.location.href = `../../public/dash/dashboard/${userType}-dashboard.html`;
+                    window.location.href = `../../dash_folder/dash/dashboard/${userType}-dashboard.html`;
                 } else {
                     alert(data.message || 'Login failed. Please try again.');
                 }
