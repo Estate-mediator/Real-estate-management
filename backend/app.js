@@ -19,7 +19,7 @@ const app = express()
 app.use(express.static(path.join(__dirname, "../public")))
 app.use(express.json())
 app.use(cors({
-  origin: 'https://',
+  origin: 'https://real-estate-management-5.onrender.com',
   credentials: true
 }));
 
